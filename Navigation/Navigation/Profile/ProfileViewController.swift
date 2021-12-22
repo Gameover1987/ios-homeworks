@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
         profileHeaderView.frame = CGRect(x: safeAreaRect.minX, y: safeAreaRect.minY, width: safeAreaRect.width, height: safeAreaRect.height)
         profileHeaderView.arrange()
      
-        self.view.addSubview(profileHeaderView)
+        view.addSubview(profileHeaderView)
         
     }
 }
