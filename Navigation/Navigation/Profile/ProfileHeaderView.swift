@@ -8,40 +8,23 @@ public class ProfileConstrains {
     public static let headerMargin = 27
 }
 
-public class UITextFieldWithPadding : UITextField {
-    var textPadding = UIEdgeInsets(
-        top: 0,
-        left: 3,
-        bottom: 0,
-        right: 3
-    )
-    
-    public override func textRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.textRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
-    }
-    
-    public override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.editingRect(forBounds: bounds)
-        return rect.inset(by: textPadding)
-    }
-}
-
 public class ProfileHeaderView : UIView {
     
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.frame = CGRect(x: ProfileConstrains.defaultMargin,
-                                 y: ProfileConstrains.defaultMargin,
-                                 width: ProfileConstrains.imageWidth,
-                                 height: ProfileConstrains.imageHeight)
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
-        imageView.clipsToBounds = true
         
         imageView.image = UIImage(named: "Ava")
         return imageView
+    }()
+    
+    private let fullNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Check, mate, rock'n'roll"
+        label.font =  UIFont.boldSystemFont(ofSize: 18)
+        return label
     }()
     
     private let statusLabel: UILabel = {
@@ -52,72 +35,84 @@ public class ProfileHeaderView : UIView {
         return label
     }()
     
+    private let statusTextField: UITextFieldWithPadding = {
+        var textField = UITextFieldWithPadding()
+        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 12
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.backgroundColor = .white
+        
+        textField.addTarget(self, action: #selector(statusTextChanged(_ :)), for: .editingChanged)
+        return textField
+    }()
+    
+    private let setStatusButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Set status", for: .normal)
+        button.backgroundColor = UIColorUtils.CreateFromRGB(red: 0, green: 146, blue: 249)
+        button.layer.cornerRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        return button
+    }()
+    
     public func arrange() {
         backgroundColor = UIColorUtils.CreateFromRGB(red: 209, green: 209, blue: 214)
         
-        let borderColor = UIColorUtils.CreateFromRGB(red: 146, green: 146, blue: 158)
-        
-        // Add borders
-        self.addBorder(toSide: ViewSide.Top, withColor: borderColor, andThickness: 1)
-        self.addBorder(toSide: ViewSide.Bottom, withColor: borderColor, andThickness: 1)
-        
-        // Add image
+        // Avatar
         addSubview(profileImage)
-        
-        // Add Profile header
-        let headerLabel = UILabel()
-        headerLabel.text = "Check, mate, rock'n'roll"
-        headerLabel.font =  UIFont.boldSystemFont(ofSize: 18)
-        headerLabel.frame = CGRect(x: ProfileConstrains.defaultMargin + ProfileConstrains.imageWidth + ProfileConstrains.defaultMargin,
-                                   y: ProfileConstrains.headerMargin,
-                                   width: Int(bounds.width),
-                                   height: 30)
-        addSubview(headerLabel)
-        
-        // Add Profile subheader
-        statusLabel.frame =  CGRect(x: ProfileConstrains.defaultMargin + ProfileConstrains.imageWidth + ProfileConstrains.defaultMargin,
-                                    y: ProfileConstrains.headerMargin + Int(Double(ProfileConstrains.imageHeight) * 0.5),
-                                    width: Int(bounds.width),
-                                    height: 30)
+        profileImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            profileImage.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+            profileImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            profileImage.widthAnchor.constraint(equalToConstant: 130),
+            profileImage.heightAnchor.constraint(equalToConstant: 130)
+        ])
+        profileImage.layer.cornerRadius = 65
+        profileImage.clipsToBounds = true
+
+        // Fullname
+        addSubview(fullNameLabel)
+        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            fullNameLabel.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
+            fullNameLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor)
+        ])
+
+        // Status
         addSubview(statusLabel)
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statusLabel.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 30),
+            statusLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor)
+        ])
+
+        // Textfield
+        addSubview(statusTextField)
+        statusTextField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statusTextField.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 4),
+            statusTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16),
+            statusTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
         
-        // Add textfield
-        let textEdit = UITextFieldWithPadding()
-        textEdit.font = UIFont.systemFont(ofSize: 15)
-        textEdit.layer.borderWidth = 1
-        textEdit.layer.cornerRadius = 12
-        textEdit.layer.borderColor = UIColor.black.cgColor
-        textEdit.backgroundColor = .white
-        
-        let textEditFrame = CGRect(x: ProfileConstrains.defaultMargin + ProfileConstrains.imageWidth + ProfileConstrains.defaultMargin,
-                                   y: Int(statusLabel.frame.maxY),
-                                   width: Int(bounds.width) - (ProfileConstrains.defaultMargin + ProfileConstrains.imageWidth + ProfileConstrains.defaultMargin) - ProfileConstrains.defaultMargin,
-                                   height: 40)
-        textEdit.addTarget(self, action: #selector(statusTextChanged(_ :)), for: .editingChanged)
-        
-        print(textEditFrame)
-        textEdit.frame = textEditFrame
-        
-        addSubview(textEdit)
-        
-        // Add button
-        let setStatusButton = UIButton()
-        setStatusButton.setTitle("Set status", for: .normal)
-        setStatusButton.backgroundColor = UIColorUtils.CreateFromRGB(red: 0, green: 146, blue: 249)
-        setStatusButton.layer.cornerRadius = 4
-        setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        setStatusButton.layer.shadowRadius = 4
-        setStatusButton.layer.shadowColor = UIColor.black.cgColor
-        setStatusButton.layer.shadowOpacity = 0.7
-        
-        let setStatusButtonFrame = CGRect(x: ProfileConstrains.defaultMargin,
-                                          y: Int(textEdit.frame.maxY) + ProfileConstrains.defaultMargin,
-                                          width: Int(bounds.width) - ProfileConstrains.defaultMargin * 2,
-                                          height: 50)
-        setStatusButton.frame = setStatusButtonFrame
-        setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        
+        // Set status button
         addSubview(setStatusButton)
+        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            setStatusButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+            setStatusButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 16),
+            setStatusButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor,constant: -16),
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     private var statusText: String?
@@ -126,7 +121,6 @@ public class ProfileHeaderView : UIView {
         statusText = textField.text
         print("Status text is \(statusText ?? "")")
     }
-    
     
     @objc func buttonPressed() {
         statusLabel.text = statusText
