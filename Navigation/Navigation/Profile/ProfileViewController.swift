@@ -13,16 +13,19 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-    }
-    
-    override func viewWillLayoutSubviews() {
         
-        let safeAreaRect = view.safeAreaLayoutGuide.layoutFrame
         let profileHeaderView = ProfileHeaderView()
-        profileHeaderView.frame = CGRect(x: safeAreaRect.minX, y: safeAreaRect.minY, width: safeAreaRect.width, height: safeAreaRect.height)
-        profileHeaderView.arrange()
-     
+        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+
         view.addSubview(profileHeaderView)
         
+        NSLayoutConstraint.activate([
+            profileHeaderView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+        ])
+        
+        profileHeaderView.arrange()
     }
 }
