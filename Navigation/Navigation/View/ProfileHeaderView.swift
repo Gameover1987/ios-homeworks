@@ -37,6 +37,7 @@ public class ProfileHeaderView : UIView {
     
     private let statusTextField: UITextFieldWithPadding = {
         var textField = UITextFieldWithPadding()
+        
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 12

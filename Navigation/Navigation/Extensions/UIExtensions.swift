@@ -24,6 +24,12 @@ extension UIView {
         
         layer.addSublayer(border)
     }
+    
+    func addSubviews(views: UIView...){
+        for view in views {
+            addSubview(view)
+        }
+    }
 }
 
 public class UIColorUtils {
