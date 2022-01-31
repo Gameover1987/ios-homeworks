@@ -4,6 +4,14 @@ import UIKit
 
 public class LoginView : UIView {
     
+    private let imageWidth = 100.0
+    private let imageHeight = 100.0
+    private let imageTopMargin = 120.0
+    private let imageBottomMargin = 120.0
+    private let loginPasswordStackHeight = 100.0
+    private let buttonHeight = 50.0
+    private let defaultSideMargin = 16.0
+    
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
@@ -108,20 +116,20 @@ public class LoginView : UIView {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
-            vkLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120.0),
+            vkLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: imageTopMargin),
             vkLogo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            vkLogo.widthAnchor.constraint(equalToConstant: 100),
-            vkLogo.heightAnchor.constraint(equalToConstant: 100),
+            vkLogo.widthAnchor.constraint(equalToConstant: imageWidth),
+            vkLogo.heightAnchor.constraint(equalToConstant: imageHeight),
             
-            inputFieldStackView.topAnchor.constraint(equalTo: vkLogo.bottomAnchor, constant: 120),
-            inputFieldStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16.0),
-            inputFieldStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16.0),
-            inputFieldStackView.heightAnchor.constraint(equalToConstant: 100),
+            inputFieldStackView.topAnchor.constraint(equalTo: vkLogo.bottomAnchor, constant: imageBottomMargin),
+            inputFieldStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: defaultSideMargin),
+            inputFieldStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -defaultSideMargin),
+            inputFieldStackView.heightAnchor.constraint(equalToConstant: loginPasswordStackHeight),
             
-            logInButton.topAnchor.constraint(equalTo: inputFieldStackView.bottomAnchor, constant: 16.0),
-            logInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16.0),
-            logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16.0),
-            logInButton.heightAnchor.constraint(equalToConstant: 50)
+            logInButton.topAnchor.constraint(equalTo: inputFieldStackView.bottomAnchor, constant: defaultSideMargin),
+            logInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: defaultSideMargin),
+            logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -defaultSideMargin),
+            logInButton.heightAnchor.constraint(equalToConstant: buttonHeight)
         ])
     }
 }
