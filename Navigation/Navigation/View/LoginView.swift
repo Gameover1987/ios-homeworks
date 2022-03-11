@@ -83,11 +83,13 @@ public class LoginView : UIView {
         button.setTitle("Log In", for: .normal)
         button.backgroundColor = UIColor.init(named: "vkColor")
         button.layer.cornerRadius = 10
-        //button.addTarget(nil, action: #selector(buttonLogInAction), for: .touchUpInside)
+        button.addTarget(nil, action: #selector(buttonLogInAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-   
+    
+    public var loginRequest: (() -> ())?
+    
     public func arrange(parentView: UIView) {
         
         addSubview(scrollView)
@@ -131,5 +133,23 @@ public class LoginView : UIView {
             logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -defaultSideMargin),
             logInButton.heightAnchor.constraint(equalToConstant: buttonHeight)
         ])
+    }
+    
+    public func handleShowKeyboard(_ notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.convert(keyboardFrame, from: nil)
+        var contentInset: UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInset
+    }
+    
+    public func handleHideKeyboard(_ notification: NSNotification) {
+        let contentInset: UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc private func buttonLogInAction() {
+        loginRequest?()
     }
 }
