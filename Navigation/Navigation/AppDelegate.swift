@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Creating chilren viewcontrollers
         let feedViewController = FeedViewController()
         feedViewController.title = "Feed"
-        let profileViewController = ProfileViewController()
+        let profileViewController = LogInViewController()
         profileViewController.title = "Profile"
         
         // Creating tab bar items
@@ -36,8 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
             
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
-        tabBarController.selectedViewController = feedNavigationController
+        
+        tabBarController.viewControllers = [profileNavigationController, feedNavigationController]
+        tabBarController.selectedViewController = profileNavigationController
         
         window = UIWindow()
 

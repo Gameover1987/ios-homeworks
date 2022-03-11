@@ -16,6 +16,8 @@
 		80CC3083275A1C0800D90FCA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC3082275A1C0800D90FCA /* InfoViewController.swift */; };
 		80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */; };
 		80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56C17276F98250079BC17 /* UIExtensions.swift */; };
+		80E084BE27A57BC3004B100D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E084BD27A57BC3004B100D /* LogInViewController.swift */; };
+		80E084C027A57E1B004B100D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E084BF27A57E1B004B100D /* LoginView.swift */; };
 		80E6E38C2774DFCF0088683F /* UITextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		80CC3082275A1C0800D90FCA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		80D56C17276F98250079BC17 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		80E084BD27A57BC3004B100D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		80E084BF27A57E1B004B100D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithPadding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,27 +68,15 @@
 		80B34B9827592EBB001357F8 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				80D56C16276F98110079BC17 /* Extensions */,
-				80D56BCD276F43110079BC17 /* Profile */,
-				80B34B9927592EBB001357F8 /* AppDelegate.swift */,
-				80CC3082275A1C0800D90FCA /* InfoViewController.swift */,
-				80CC307B275A1B4400D90FCA /* FeedViewController.swift */,
-				80CC3080275A1BAF00D90FCA /* PostViewController.swift */,
-				80B34BA427592EBC001357F8 /* LaunchScreen.storyboard */,
-				80B34BA227592EBC001357F8 /* Assets.xcassets */,
 				80B34BA727592EBC001357F8 /* Info.plist */,
+				80B34B9927592EBB001357F8 /* AppDelegate.swift */,
+				80B34BA227592EBC001357F8 /* Assets.xcassets */,
+				80E084C127A57E54004B100D /* Controllers */,
+				80D56C16276F98110079BC17 /* Extensions */,
+				80B34BA427592EBC001357F8 /* LaunchScreen.storyboard */,
+				80E084C227A57E7B004B100D /* View */,
 			);
 			path = Navigation;
-			sourceTree = "<group>";
-		};
-		80D56BCD276F43110079BC17 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */,
-				80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */,
-				80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		80D56C16276F98110079BC17 /* Extensions */ = {
@@ -93,6 +85,36 @@
 				80D56C17276F98250079BC17 /* UIExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		80E084C127A57E54004B100D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */,
+				80E084BD27A57BC3004B100D /* LogInViewController.swift */,
+				80CC3082275A1C0800D90FCA /* InfoViewController.swift */,
+				80CC307B275A1B4400D90FCA /* FeedViewController.swift */,
+				80CC3080275A1BAF00D90FCA /* PostViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		80E084C227A57E7B004B100D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				80E084C327A57E97004B100D /* Controls */,
+				80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */,
+				80E084BF27A57E1B004B100D /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		80E084C327A57E97004B100D /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,11 +189,13 @@
 			files = (
 				80B34B9A27592EBB001357F8 /* AppDelegate.swift in Sources */,
 				80E6E38C2774DFCF0088683F /* UITextFieldWithPadding.swift in Sources */,
+				80E084BE27A57BC3004B100D /* LogInViewController.swift in Sources */,
 				80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */,
 				80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */,
 				80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */,
 				80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */,
 				80CC3081275A1BAF00D90FCA /* PostViewController.swift in Sources */,
+				80E084C027A57E1B004B100D /* LoginView.swift in Sources */,
 				80CC3083275A1C0800D90FCA /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
