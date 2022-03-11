@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        view.addSubview(tableContents)
         tableContents.register(PublicationTableViewCell.self, forCellReuseIdentifier: cellReuseId)
         tableContents.separatorStyle = .singleLine
         tableContents.dataSource = self
