@@ -1,9 +1,3 @@
-//
-//  ProfileViewController.swift
-//  Navigation
-//
-//  Created by Вячеслав on 03.12.2021.
-//
 
 import UIKit
 
@@ -21,8 +15,8 @@ class ProfileViewController: UIViewController {
         tableContents.delegate = self
         
         NSLayoutConstraint.activate([
-            tableContents.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableContents.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableContents.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            tableContents.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             tableContents.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableContents.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
@@ -31,14 +25,14 @@ class ProfileViewController: UIViewController {
     private var tableHeader: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView()
         profileHeaderView.backgroundColor = .systemGray
-        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        profileHeaderView.toAutoLayout()
         return profileHeaderView
     }()
     
     private var tableContents: UITableView = {
         let table = UITableView.init(frame:  CGRect.zero, style: .grouped)
-        table.backgroundColor = .white
-        table.translatesAutoresizingMaskIntoConstraints = false
+        //table.backgroundColor = UIColorUtils.CreateFromRGB(red: 209, green: 209, blue: 214)
+        table.toAutoLayout()
         return table
     }()
     
@@ -64,7 +58,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return tableHeader
     }
-    
     
     // Setup header height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

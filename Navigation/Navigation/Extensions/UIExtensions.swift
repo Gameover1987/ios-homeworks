@@ -30,6 +30,10 @@ extension UIView {
             addSubview(view)
         }
     }
+    
+    func toAutoLayout() {
+        translatesAutoresizingMaskIntoConstraints = false
+    }
 }
 
 public class UIColorUtils {
