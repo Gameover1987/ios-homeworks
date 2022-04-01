@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         itemInfoView.image = UIImage(systemName: "info.circle.fill")
         itemInfoView.title = "Информация"
         
+        /// Возврат navigationController к реализации до iOS 13
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: "whiteColorApp")
+        habitsNavigationController.navigationBar.scrollEdgeAppearance = appearance
+        infoNavigationController.navigationBar.scrollEdgeAppearance = appearance
+        
         habitsNavigationController.tabBarItem = itemHabitsView
         infoNavigationController.tabBarItem = itemInfoView
         

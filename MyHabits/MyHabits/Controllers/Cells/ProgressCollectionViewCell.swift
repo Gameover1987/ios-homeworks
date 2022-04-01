@@ -3,11 +3,11 @@ import UIKit
 
 private enum Margins {
     static let topForTitle = 10.0
-    static let topForProgress = 40.0
+    static let topForProgress = 38.0
     static let bottomForProgress = -15.0
-    static let heightProgress = 8.0
-    static let tralling = -10.0
-    static let leading = 10.0
+    static let heightProgress = 7.0
+    static let tralling = -12.0
+    static let leading = 12.0
 }
 
 final class ProgressCollectionViewCell: UICollectionViewCell {
