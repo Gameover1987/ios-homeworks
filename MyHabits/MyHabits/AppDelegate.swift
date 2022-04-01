@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         tabBarController.tabBar.tintColor = .black
         tabBarController.tabBar.unselectedItemTintColor = .gray
-        tabBarController.tabBar.backgroundColor = UIColorUtils.FromRGB(red: 242, green: 242, blue: 247)
+        tabBarController.tabBar.backgroundColor = UIColor(named: "whiteColorApp")
         tabBarController.tabBar.layer.borderWidth = 1
         tabBarController.tabBar.layer.borderColor = UIColorUtils.FromRGB(red: 189, green: 189, blue: 194).cgColor
         
