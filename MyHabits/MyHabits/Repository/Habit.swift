@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-public final class Habit : Decodable, Encodable, Equatable {
+final class Habit : Decodable, Encodable, Equatable {
     
     private var r: CGFloat
     private var g: CGFloat

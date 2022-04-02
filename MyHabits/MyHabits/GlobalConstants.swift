@@ -1,4 +1,4 @@
-class GlobalConstants {
+final class GlobalConstants {
     
     enum ViewMode {
         case add

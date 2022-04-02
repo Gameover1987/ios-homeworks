@@ -1,7 +1,7 @@
 
 import Foundation
 
-public final class HabitsStore {
+final class HabitsStore {
     
     private lazy var userDefaults: UserDefaults = .standard
     
