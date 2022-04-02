@@ -1,16 +1,19 @@
 
 import UIKit
 
-private enum Margins {
-    static let topForTitle = 10.0
-    static let topForProgress = 38.0
-    static let bottomForProgress = -15.0
-    static let heightProgress = 7.0
-    static let tralling = -12.0
-    static let leading = 12.0
-}
-
 final class ProgressCollectionViewCell: UICollectionViewCell {
+    
+    private static let everythingWillWorkOutMsg = "Все получится!"
+    private static let everythingWorkedOutMsg = "Все получилось!!!"
+    
+    private enum Margins {
+        static let topForTitle = 10.0
+        static let topForProgress = 38.0
+        static let bottomForProgress = -15.0
+        static let heightProgress = 7.0
+        static let tralling = -12.0
+        static let leading = 12.0
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -41,7 +44,7 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Всё получится!"
+        label.text = everythingWillWorkOutMsg
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textColor = UIColor(red: 0.557, green: 0.557, blue: 0.576, alpha: 1)
         label.toAutoLayout()
@@ -71,6 +74,13 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     public func updateProgress() {
         progressBar.setProgress(HabitsStore.instance.todayProgress, animated: true)
         progressLabel.text = String(Int(self.progressBar.progress * 100)) + "%"
+        
+        if progressBar.progress == 1 {
+            titleLabel.text = ProgressCollectionViewCell.everythingWorkedOutMsg
+        }
+        else {
+            titleLabel.text = ProgressCollectionViewCell.everythingWillWorkOutMsg
+        }
     }
 }
 

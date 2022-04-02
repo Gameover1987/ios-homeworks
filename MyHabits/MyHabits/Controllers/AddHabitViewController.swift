@@ -1,21 +1,20 @@
 
-import Foundation
 import UIKit
-
-private enum LayoutConstants {
-    static let leading = 15.0
-    static let tralling = -15.0
-    static let topForTitle = 15.0
-    static let topForTitleName = 21.0
-    static let topActionItem = 7.0
-    static let topDatePicker = 15.0
-    static let heightTextFiled = 22.0
-    static let widthAndHeightColorButton = 30.0
-}
 
 final class AddHabitViewController : UIViewController {
     
-    init(habit: Habit?, typeHabit: GlobalConstants.TypeScreenHabit) {
+    private enum Margins {
+        static let leading = 15.0
+        static let tralling = -15.0
+        static let topForTitle = 15.0
+        static let topForTitleName = 21.0
+        static let topActionItem = 7.0
+        static let topDatePicker = 15.0
+        static let heightTextFiled = 22.0
+        static let widthAndHeightColorButton = 50.0
+    }
+    
+    init(habit: Habit?, typeHabit: GlobalConstants.ViewMode) {
         self.habit = habit
         self.typeHabit = typeHabit
         super.init(nibName: nil, bundle: nil)
@@ -27,7 +26,7 @@ final class AddHabitViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationBar.tintColor = UIColor(named: "purpleColorApp")
@@ -44,11 +43,11 @@ final class AddHabitViewController : UIViewController {
         contentView.addSubview(timeHabitLabel)
         contentView.addSubview(habbitDatePicker)
         
-        // Если привычку редактируем, тогда добавляем кнопку удаления.
-        guard typeHabit == .edit else { return }
-        contentView.addSubview(deleteHabitButton)
-        deleteHabitButton.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
-        deleteHabitButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        if (typeHabit == .edit) {
+            contentView.addSubview(deleteHabitButton)
+            deleteHabitButton.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
+            deleteHabitButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        }
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -63,36 +62,38 @@ final class AddHabitViewController : UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
-            titleNameHabitLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: LayoutConstants.topForTitleName),
-            titleNameHabitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
+            titleNameHabitLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: Margins.topForTitleName),
+            titleNameHabitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Margins.leading),
             
-            titleColorHabitLabel.topAnchor.constraint(equalTo: titleHabitTextField.bottomAnchor, constant: LayoutConstants.topForTitle),
-            titleColorHabitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
+            titleColorHabitLabel.topAnchor.constraint(equalTo: titleHabitTextField.bottomAnchor, constant: Margins.topForTitle),
+            titleColorHabitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Margins.leading),
             
-            titleTimeHabitLabel.topAnchor.constraint(equalTo: colorSettingButton.bottomAnchor, constant: LayoutConstants.topForTitle),
-            titleTimeHabitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
+            titleTimeHabitLabel.topAnchor.constraint(equalTo: colorSettingButton.bottomAnchor, constant: Margins.topForTitle),
+            titleTimeHabitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Margins.leading),
             
-            titleHabitTextField.topAnchor.constraint(equalTo: titleNameHabitLabel.bottomAnchor, constant: LayoutConstants.topActionItem),
-            titleHabitTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
-            titleHabitTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: LayoutConstants.tralling),
-            titleHabitTextField.heightAnchor.constraint(equalToConstant: LayoutConstants.heightTextFiled),
+            titleHabitTextField.topAnchor.constraint(equalTo: titleNameHabitLabel.bottomAnchor, constant: Margins.topActionItem),
+            titleHabitTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Margins.leading),
+            titleHabitTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Margins.tralling),
+            titleHabitTextField.heightAnchor.constraint(equalToConstant: Margins.heightTextFiled),
             
-            colorSettingButton.topAnchor.constraint(equalTo: titleColorHabitLabel.bottomAnchor, constant: LayoutConstants.topActionItem),
-            colorSettingButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
-            colorSettingButton.widthAnchor.constraint(equalToConstant: LayoutConstants.widthAndHeightColorButton),
-            colorSettingButton.heightAnchor.constraint(equalToConstant: LayoutConstants.widthAndHeightColorButton),
+            colorSettingButton.topAnchor.constraint(equalTo: titleColorHabitLabel.bottomAnchor, constant: Margins.topActionItem),
+            colorSettingButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Margins.leading),
+            colorSettingButton.widthAnchor.constraint(equalToConstant: Margins.widthAndHeightColorButton),
+            colorSettingButton.heightAnchor.constraint(equalToConstant: Margins.widthAndHeightColorButton),
             
-            timeHabitLabel.topAnchor.constraint(equalTo: titleTimeHabitLabel.bottomAnchor, constant: LayoutConstants.topActionItem),
-            timeHabitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
+            timeHabitLabel.topAnchor.constraint(equalTo: titleTimeHabitLabel.bottomAnchor, constant: Margins.topActionItem),
+            timeHabitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Margins.leading),
             
-            habbitDatePicker.topAnchor.constraint(equalTo: timeHabitLabel.bottomAnchor, constant: LayoutConstants.topActionItem),
+            habbitDatePicker.topAnchor.constraint(equalTo: timeHabitLabel.bottomAnchor, constant: Margins.topActionItem),
             habbitDatePicker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             habbitDatePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
+        
+        validate()
     }
     
     private var habit: Habit?
-    private var typeHabit: GlobalConstants.TypeScreenHabit
+    private var typeHabit: GlobalConstants.ViewMode
     
     private lazy var cancelHabitButton: UIBarButtonItem = {
         let item = UIBarButtonItem(title: "Отменить", style: .plain, target: self, action: #selector(returnToThePreviousScreen))
@@ -142,22 +143,28 @@ final class AddHabitViewController : UIViewController {
         return label
     }()
     
-    public lazy var titleHabitTextField: UITextField = {
+    private lazy var titleHabitTextField: UITextField = {
         let titleHabit = UITextField()
+        
         titleHabit.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 22))
         titleHabit.font = .boldSystemFont(ofSize: 17)
         titleHabit.textColor = UIColor.init(named: "blueColorApp")
         titleHabit.attributedPlaceholder = NSAttributedString.init(string: "Бегать по утрам, спать 8 часов и т.п.")
-        titleHabit.translatesAutoresizingMaskIntoConstraints = false
-        guard typeHabit == .edit else { return titleHabit }
-        titleHabit.text = self.habit?.name
+        titleHabit.toAutoLayout()
+        titleHabit.addTarget(self, action: #selector(habitTitleChanged(_ :)), for: .editingChanged)
+        if (self.typeHabit == .edit) {
+            titleHabit.text = self.habit?.name
+        }else {
+            titleHabit.text = ""
+        }
+        
         return titleHabit
     }()
     
     private lazy var colorSettingButton: UIButton = {
         let button = UIButton()
         let store = HabitsStore.instance
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = Margins.widthAndHeightColorButton / 2
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(presentColorPicker), for: .touchUpInside)
         button.backgroundColor = typeHabit == .edit ? self.habit?.color : self.habit?.color ?? .orange
@@ -205,8 +212,16 @@ final class AddHabitViewController : UIViewController {
         return attributedString1
     }
     
+    private func validate() {
+        self.navigationItem.rightBarButtonItem?.isEnabled = titleHabitTextField.hasText
+    }
+    
     @objc private func returnToThePreviousScreen() {
         self.dismiss(animated: true)
+    }
+    
+    @objc func habitTitleChanged(_ textField: UITextField) {
+        validate()
     }
     
     /// Нажатие кнопки "Сохранить"
@@ -272,11 +287,11 @@ final class AddHabitViewController : UIViewController {
 }
 
 extension AddHabitViewController: UIColorPickerViewControllerDelegate {
-
+    
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         self.colorSettingButton.backgroundColor = viewController.selectedColor
     }
-
+    
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         self.colorSettingButton.backgroundColor = viewController.selectedColor
     }

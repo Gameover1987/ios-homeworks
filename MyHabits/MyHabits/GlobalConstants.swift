@@ -1,6 +1,6 @@
 class GlobalConstants {
     
-    enum TypeScreenHabit {
+    enum ViewMode {
         case add
         case edit
     }
