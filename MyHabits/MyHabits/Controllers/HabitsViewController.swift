@@ -43,7 +43,7 @@ final class HabitsViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.toAutoLayout()
         return scrollView
     }()
     
@@ -51,7 +51,7 @@ final class HabitsViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor(red: 0.949, green: 0.949, blue: 0.969, alpha: 1)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.toAutoLayout()
         return collectionView
     }()
     
@@ -60,7 +60,7 @@ final class HabitsViewController: UIViewController {
         let configuration = UIImage.SymbolConfiguration(font: largeFont)
         let image = UIImage(systemName: "plus", withConfiguration: configuration)
         let item = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(showTheWindowForAddingNewHabit))
-        item.tintColor = UIColor(named: "purpleColorApp")
+        item.tintColor = UIColor(named: "purple")
         return item
     }()
     

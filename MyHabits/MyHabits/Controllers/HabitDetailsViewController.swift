@@ -11,7 +11,7 @@ final class HabitDetailsViewController: UIViewController {
 
         self.title = habit!.name
         self.navigationItem.largeTitleDisplayMode = .never
-        self.navigationController?.navigationBar.tintColor = UIColor(named: "purpleColorApp")
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "purple")
         self.navigationItem.rightBarButtonItem = addingHabitButton
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifierTable)
         tableView.dataSource = self
@@ -40,7 +40,7 @@ final class HabitDetailsViewController: UIViewController {
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor(red: 0.949, green: 0.949, blue: 0.969, alpha: 1)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.toAutoLayout()
         return tableView
     }()
     
@@ -81,6 +81,7 @@ extension HabitDetailsViewController: UITableViewDataSource {
         // TODO: В ячейку нужно класть даты, в которых привычка была выполнена.
         let date = HabitsStore.instance.dates[indexPath.row]
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "d MMMM yyyy"
         //dateFormatter.locale = Locale(identifier: "ru_RU")
         

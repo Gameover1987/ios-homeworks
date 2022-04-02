@@ -56,7 +56,7 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
         label.text = String(Int(self.progressBar.progress * 100)) + "%"
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textColor = UIColor(red: 0.557, green: 0.557, blue: 0.576, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.toAutoLayout()
         return label
     }()
     
@@ -66,8 +66,8 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
         progressView.clipsToBounds = true
         progressView.setProgress(HabitsStore.instance.todayProgress, animated: false)
         progressView.trackTintColor = UIColor(red: 0.847, green: 0.847, blue: 0.847, alpha: 1)
-        progressView.progressTintColor = UIColor(named: "purpleColorApp")
-        progressView.translatesAutoresizingMaskIntoConstraints = false
+        progressView.progressTintColor = UIColor(named: "purple")
+        progressView.toAutoLayout()
         return progressView
     }()
     
