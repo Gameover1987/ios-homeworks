@@ -56,7 +56,7 @@ public final class Habit : Decodable, Encodable, Equatable {
         }
     }
     
-    public var isTodayAdded: Bool {
+    public var isAlreadyTakenToday: Bool {
         guard let lastTrackDate = trackDates.last else {
             return false
         }

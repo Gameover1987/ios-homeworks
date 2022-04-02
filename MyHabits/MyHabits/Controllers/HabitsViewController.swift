@@ -38,6 +38,10 @@ final class HabitsViewController: UIViewController {
         self.collectionView.reloadData()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.collectionView.reloadData()
+    }
+    
     private weak var progressCell: ProgressCollectionViewCell?
     
     private let scrollView: UIScrollView = {
@@ -120,7 +124,7 @@ extension HabitsViewController: UICollectionViewDataSource {
             cell.update(title: store.name,
                         subtitle: store.dateDescription,
                         counter: store.trackDates.count,
-                        statusImage: store.isTodayAdded,
+                        isChecked: store.isAlreadyTakenToday,
                         color: store.color)
             return cell
         }

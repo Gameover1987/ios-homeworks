@@ -22,28 +22,26 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        contentView.addSubview(titleHabits)
-        contentView.addSubview(subtitleHabits)
-        contentView.addSubview(counterHabits)
-        contentView.addSubview(statusHabitsButton)
+        
+        contentView.addSubviews(titleLabel, subtitleLabel, counterLabel, statusButton)
         
         NSLayoutConstraint.activate([
-            titleHabits.topAnchor.constraint(equalTo: contentView.topAnchor, constant: LayoutConstants.topForTitle),
-            titleHabits.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
-            titleHabits.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: LayoutConstants.tralling),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: LayoutConstants.topForTitle),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: LayoutConstants.tralling),
             
-            subtitleHabits.topAnchor.constraint(equalTo: titleHabits.bottomAnchor, constant: LayoutConstants.topForSubtitle),
-            subtitleHabits.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
-            subtitleHabits.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: LayoutConstants.tralling),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutConstants.topForSubtitle),
+            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
+            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: LayoutConstants.tralling),
             
-            counterHabits.topAnchor.constraint(equalTo: contentView.topAnchor, constant: LayoutConstants.topForCounter),
-            counterHabits.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
-            counterHabits.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: LayoutConstants.bottom),
+            counterLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: LayoutConstants.topForCounter),
+            counterLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.leading),
+            counterLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: LayoutConstants.bottom),
             
-            statusHabitsButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: LayoutConstants.topForStatus),
-            statusHabitsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: LayoutConstants.trallingForStatus),
-            statusHabitsButton.widthAnchor.constraint(equalToConstant: LayoutConstants.weightStatus),
-            statusHabitsButton.heightAnchor.constraint(equalToConstant: LayoutConstants.heightStatus)
+            statusButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: LayoutConstants.topForStatus),
+            statusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: LayoutConstants.trallingForStatus),
+            statusButton.widthAnchor.constraint(equalToConstant: LayoutConstants.weightStatus),
+            statusButton.heightAnchor.constraint(equalToConstant: LayoutConstants.heightStatus)
         ])
     }
     
@@ -54,7 +52,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     
     var indexElement: Int?
     
-    private var titleHabits: UILabel = {
+    private var titleLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.numberOfLines = 2
@@ -62,7 +60,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private var subtitleHabits: UILabel = {
+    private var subtitleLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .gray
@@ -70,7 +68,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private var counterHabits: UILabel = {
+    private var counterLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = .gray
@@ -78,7 +76,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private var statusHabitsButton: UIButton = {
+    private var statusButton: UIButton = {
         var button = UIButton(frame: .zero)
         button.addTarget(self, action: #selector(changeStatusHabit), for: .touchUpInside)
         button.contentVerticalAlignment = .fill
@@ -87,24 +85,25 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    func update(title: String, subtitle: String, counter: Int, statusImage: Bool, color: UIColor) {
-        titleHabits.text = title
-        titleHabits.textColor = color
-        subtitleHabits.text = subtitle
-        counterHabits.text = "Счётчик: \(counter)"
-        statusHabitsButton.tintColor = color
-        statusImage ? statusHabitsButton.setImage(UIImage(systemName: "checkmark.circle.fill")!, for: .normal) : statusHabitsButton.setImage(UIImage(systemName: "circle")!, for: .normal)
+    func update(title: String, subtitle: String, counter: Int, isChecked: Bool, color: UIColor) {
+        titleLabel.text = title
+        titleLabel.textColor = color
+        subtitleLabel.text = subtitle
+        counterLabel.text = "Счётчик: \(counter)"
+        statusButton.tintColor = color
+        
+        isChecked ? statusButton.setImage(UIImage(systemName: "checkmark.circle.fill")!, for: .normal) :
+                    statusButton.setImage(UIImage(systemName: "circle")!, for: .normal)
     }
     
-    /// Обработка, нажатия на кнопку выполенения.
     @objc private func changeStatusHabit() {
         let data = HabitsStore.instance.habits[indexElement!]
-        guard !data.isTodayAdded else { return }
-        statusHabitsButton.setImage(UIImage(systemName: "checkmark.circle.fill")!, for: .normal)
+        guard !data.isAlreadyTakenToday else { return }
+        statusButton.setImage(UIImage(systemName: "checkmark.circle.fill")!, for: .normal)
         HabitsStore.instance.track(HabitsStore.instance.habits[indexElement!])
         let nameNotification = Notification.Name(rawValue: GlobalConstants.progressCellNotificationKey)
         NotificationCenter.default.post(name: nameNotification, object: nil)
-        self.counterHabits.text = "Счётчик: \(HabitsStore.instance.habits[indexElement!].trackDates.count)"
+        self.counterLabel.text = "Счётчик: \(HabitsStore.instance.habits[indexElement!].trackDates.count)"
     }
 }
 

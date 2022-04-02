@@ -47,7 +47,7 @@ public final class HabitsStore {
         guard habits.isEmpty == false else {
             return 0
         }
-        let takenTodayHabits = habits.filter { $0.isTodayAdded }
+        let takenTodayHabits = habits.filter { $0.isAlreadyTakenToday }
         return Float(takenTodayHabits.count) / Float(habits.count)
     }
     

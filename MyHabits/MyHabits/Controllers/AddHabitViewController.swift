@@ -234,7 +234,7 @@ final class AddHabitViewController : UIViewController {
             let indexItem = HabitsStore.instance.habits.firstIndex(of: self.habit!)
             let data = HabitsStore.instance.habits[indexItem!]
             HabitsStore.instance.habits[indexItem!] = .init(name: habitNameTextField.text!, date: habbitDatePicker.date, color: habitColorButton.backgroundColor!)
-            if data.isTodayAdded {
+            if data.isAlreadyTakenToday {
                 HabitsStore.instance.track(HabitsStore.instance.habits[indexItem!])
             }
             let notificationForScreenDetail = Notification.Name(rawValue: GlobalConstants.hideScreenDetailNotificationKey)
