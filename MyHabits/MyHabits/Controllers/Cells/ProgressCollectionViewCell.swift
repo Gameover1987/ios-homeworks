@@ -25,9 +25,8 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(progressLabel)
-        contentView.addSubview(progressBar)
+        
+        contentView.addSubviews(titleLabel, progressLabel, progressBar)
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Margins.topForTitle),
@@ -40,6 +39,8 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
             progressBar.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Margins.bottomForProgress),
             progressBar.heightAnchor.constraint(equalToConstant: Margins.heightProgress),
         ])
+        
+        updateTitleText()
     }
     
     private let titleLabel: UILabel = {
@@ -65,7 +66,7 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
         progressView.layer.cornerRadius = 5
         progressView.clipsToBounds = true
         progressView.setProgress(HabitsStore.instance.todayProgress, animated: false)
-        progressView.trackTintColor = UIColor(red: 0.847, green: 0.847, blue: 0.847, alpha: 1)
+        progressView.trackTintColor = UIColor(named: "white")
         progressView.progressTintColor = UIColor(named: "purple")
         progressView.toAutoLayout()
         return progressView
@@ -75,6 +76,10 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
         progressBar.setProgress(HabitsStore.instance.todayProgress, animated: true)
         progressLabel.text = String(Int(self.progressBar.progress * 100)) + "%"
         
+        updateTitleText()
+    }
+    
+    private func updateTitleText() {
         if progressBar.progress == 1 {
             titleLabel.text = ProgressCollectionViewCell.everythingWorkedOutMsg
         }

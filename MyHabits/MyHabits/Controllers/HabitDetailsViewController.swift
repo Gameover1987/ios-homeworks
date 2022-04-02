@@ -4,7 +4,7 @@ import UIKit
 final class HabitDetailsViewController: UIViewController {
 
     private var habit: Habit?
-    private let identifierTable = String(describing: self)
+    private let tableId = String(describing: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,7 +13,7 @@ final class HabitDetailsViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.tintColor = UIColor(named: "purple")
         self.navigationItem.rightBarButtonItem = addingHabitButton
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifierTable)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: tableId)
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
@@ -76,7 +76,7 @@ extension HabitDetailsViewController: UITableViewDataSource {
     
     // Заполнение ячеек данными
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: identifierTable) else { fatalError() }
+        guard let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: tableId) else { fatalError() }
         
         // TODO: В ячейку нужно класть даты, в которых привычка была выполнена.
         let date = HabitsStore.instance.dates[indexPath.row]

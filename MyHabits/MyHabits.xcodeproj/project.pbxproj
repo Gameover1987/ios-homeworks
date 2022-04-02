@@ -14,7 +14,7 @@
 		8015BC4F27F616C70015DE9C /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015BC4E27F616C70015DE9C /* AddHabitViewController.swift */; };
 		8015BC5127F617070015DE9C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015BC5027F617070015DE9C /* InfoViewController.swift */; };
 		8015BC5427F6187D0015DE9C /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015BC5327F6187D0015DE9C /* UIColorUtils.swift */; };
-		8015BC5627F61C970015DE9C /* UIViewExtenions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015BC5527F61C970015DE9C /* UIViewExtenions.swift */; };
+		8015BC5627F61C970015DE9C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015BC5527F61C970015DE9C /* UIView.swift */; };
 		80C6514027F6E85200C1F8A0 /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6513F27F6E85200C1F8A0 /* ProgressCollectionViewCell.swift */; };
 		80C6514227F6EB8F00C1F8A0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6514127F6EB8F00C1F8A0 /* Date.swift */; };
 		80C6514427F6EBF000C1F8A0 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6514327F6EBF000C1F8A0 /* Habit.swift */; };
@@ -35,7 +35,7 @@
 		8015BC4E27F616C70015DE9C /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
 		8015BC5027F617070015DE9C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		8015BC5327F6187D0015DE9C /* UIColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtils.swift; sourceTree = "<group>"; };
-		8015BC5527F61C970015DE9C /* UIViewExtenions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtenions.swift; sourceTree = "<group>"; };
+		8015BC5527F61C970015DE9C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		80C6513F27F6E85200C1F8A0 /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		80C6514127F6EB8F00C1F8A0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		80C6514327F6EBF000C1F8A0 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				8015BC5327F6187D0015DE9C /* UIColorUtils.swift */,
-				8015BC5527F61C970015DE9C /* UIViewExtenions.swift */,
+				8015BC5527F61C970015DE9C /* UIView.swift */,
 				80C6514127F6EB8F00C1F8A0 /* Date.swift */,
 			);
 			path = Extensions;
@@ -202,7 +202,7 @@
 				8015BC4F27F616C70015DE9C /* AddHabitViewController.swift in Sources */,
 				8015BC5427F6187D0015DE9C /* UIColorUtils.swift in Sources */,
 				80C6514627F6F72C00C1F8A0 /* GlobalConstants.swift in Sources */,
-				8015BC5627F61C970015DE9C /* UIViewExtenions.swift in Sources */,
+				8015BC5627F61C970015DE9C /* UIView.swift in Sources */,
 				80C6514227F6EB8F00C1F8A0 /* Date.swift in Sources */,
 				80C6514027F6E85200C1F8A0 /* ProgressCollectionViewCell.swift in Sources */,
 				80C6514A27F6FDA000C1F8A0 /* ReusableCellProtocol.swift in Sources */,

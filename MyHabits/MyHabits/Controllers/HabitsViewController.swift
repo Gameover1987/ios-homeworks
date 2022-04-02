@@ -9,7 +9,7 @@ final class HabitsViewController: UIViewController {
         self.navigationItem.title = "Сегодня"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationItem.rightBarButtonItem = addingHabitButton
+        self.navigationItem.rightBarButtonItem = addHabitButton
         view.addSubview(scrollView)
         scrollView.addSubview(collectionView)
         collectionView.dataSource = self
@@ -38,7 +38,6 @@ final class HabitsViewController: UIViewController {
         self.collectionView.reloadData()
     }
     
-    /// Ссылка на ячейку прогресса для дальнейшего обновления
     private weak var progressCell: ProgressCollectionViewCell?
     
     private let scrollView: UIScrollView = {
@@ -55,11 +54,11 @@ final class HabitsViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var addingHabitButton: UIBarButtonItem = {
+    private lazy var addHabitButton: UIBarButtonItem = {
         let largeFont = UIFont.systemFont(ofSize: 23)
         let configuration = UIImage.SymbolConfiguration(font: largeFont)
         let image = UIImage(systemName: "plus", withConfiguration: configuration)
-        let item = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(showTheWindowForAddingNewHabit))
+        let item = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(showAddHabitWindow))
         item.tintColor = UIColor(named: "purple")
         return item
     }()
@@ -74,7 +73,7 @@ final class HabitsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadedCollectionView), name: nameReloadCellsNotification, object: nil)
     }
     
-    @objc private func showTheWindowForAddingNewHabit() {
+    @objc private func showAddHabitWindow() {
         let navigationController = UINavigationController()
         let addingHabitViewController = AddHabitViewController(habit: nil, typeHabit: .add)
         addingHabitViewController.title = "Создать"
@@ -148,7 +147,7 @@ extension HabitsViewController: UICollectionViewDelegateFlowLayout {
     /// Обработка нажатий на ячейку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.section == 1 else { return }
-        let detail = HabitDetailsViewController(habit: HabitsStore.instance.habits[indexPath.row])
-        self.navigationController?.pushViewController(detail, animated: true)
+        let detailsController = HabitDetailsViewController(habit: HabitsStore.instance.habits[indexPath.row])
+        self.navigationController?.pushViewController(detailsController, animated: true)
     }
 }
