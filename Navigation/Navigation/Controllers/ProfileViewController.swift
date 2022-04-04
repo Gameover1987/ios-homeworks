@@ -9,6 +9,7 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(tableContents)
+        tableContents.register(PhotosTableViewCell.self, forCellReuseIdentifier: ProfileViewController.photosCellId)
         tableContents.register(PublicationTableViewCell.self, forCellReuseIdentifier: ProfileViewController.publicationCellId)
         tableContents.separatorStyle = .singleLine
         tableContents.dataSource = self
@@ -20,6 +21,11 @@ class ProfileViewController: UIViewController {
             tableContents.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableContents.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     private var tableHeader: ProfileHeaderView = {
@@ -48,7 +54,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Данный метод, должен понимать, сколько всего ячеек будет.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard section == 0 else { return 4 }
+        guard section == 0 else { return 3 }
         return 1
     }
     
