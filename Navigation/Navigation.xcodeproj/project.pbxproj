@@ -18,7 +18,9 @@
 		80CC3083275A1C0800D90FCA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC3082275A1C0800D90FCA /* InfoViewController.swift */; };
 		80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */; };
 		80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56C17276F98250079BC17 /* UIExtensions.swift */; };
-		80E084BE27A57BC3004B100D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E084BD27A57BC3004B100D /* LogInViewController.swift */; };
+		80DC8B8C27F9EC79000A4D5A /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC8B8B27F9EC79000A4D5A /* PhotosTableViewCell.swift */; };
+		80DC8B8E27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC8B8D27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift */; };
+		80E084BE27A57BC3004B100D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E084BD27A57BC3004B100D /* LoginViewController.swift */; };
 		80E084C027A57E1B004B100D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E084BF27A57E1B004B100D /* LoginView.swift */; };
 		80E6E38C2774DFCF0088683F /* UITextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +39,9 @@
 		80CC3082275A1C0800D90FCA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		80D56C17276F98250079BC17 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
-		80E084BD27A57BC3004B100D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		80DC8B8B27F9EC79000A4D5A /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		80DC8B8D27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		80E084BD27A57BC3004B100D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80E084BF27A57E1B004B100D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithPadding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */,
-				80E084BD27A57BC3004B100D /* LogInViewController.swift */,
+				80E084BD27A57BC3004B100D /* LoginViewController.swift */,
 				80CC3082275A1C0800D90FCA /* InfoViewController.swift */,
 				80CC307B275A1B4400D90FCA /* FeedViewController.swift */,
 				80CC3080275A1BAF00D90FCA /* PostViewController.swift */,
@@ -119,6 +123,8 @@
 				80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */,
 				80E084BF27A57E1B004B100D /* LoginView.swift */,
 				805DC8C427DB4AE80070C37F /* PublicationTableViewCell.swift */,
+				80DC8B8B27F9EC79000A4D5A /* PhotosTableViewCell.swift */,
+				80DC8B8D27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,13 +210,15 @@
 				80B34B9A27592EBB001357F8 /* AppDelegate.swift in Sources */,
 				80E6E38C2774DFCF0088683F /* UITextFieldWithPadding.swift in Sources */,
 				805DC8C527DB4AE80070C37F /* PublicationTableViewCell.swift in Sources */,
-				80E084BE27A57BC3004B100D /* LogInViewController.swift in Sources */,
+				80E084BE27A57BC3004B100D /* LoginViewController.swift in Sources */,
 				805DC8C327DB474F0070C37F /* Publication.swift in Sources */,
 				80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */,
 				80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */,
 				80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */,
 				80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */,
+				80DC8B8C27F9EC79000A4D5A /* PhotosTableViewCell.swift in Sources */,
 				80CC3081275A1BAF00D90FCA /* PostViewController.swift in Sources */,
+				80DC8B8E27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift in Sources */,
 				80E084C027A57E1B004B100D /* LoginView.swift in Sources */,
 				80CC3083275A1C0800D90FCA /* InfoViewController.swift in Sources */,
 			);

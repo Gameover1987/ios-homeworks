@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-class LogInViewController : UIViewController {
+class LoginViewController : UIViewController {
     
     var loginView: LoginView!
     
