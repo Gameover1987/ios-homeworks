@@ -42,8 +42,6 @@ final class HabitsViewController: UIViewController {
         self.collectionView.reloadData()
     }
     
-    private weak var progressCell: ProgressCollectionViewCell?
-    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.toAutoLayout()
@@ -86,7 +84,11 @@ final class HabitsViewController: UIViewController {
     }
     
     @objc private func updateProgressCell() {
-        progressCell!.updateProgress()
+        let indexPath = IndexPath(item: 0, section: 0)
+        let firstCell = collectionView.cellForItem(at: indexPath)
+        guard let progressCell: ProgressCollectionViewCell = firstCell as? ProgressCollectionViewCell else { fatalError() }
+        
+        progressCell.updateProgress()
     }
     
     @objc private func reloadedCollectionView() {
@@ -114,7 +116,6 @@ extension HabitsViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell: ProgressCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressCollectionViewCell.identifier, for: indexPath) as? ProgressCollectionViewCell else { fatalError() }
-            progressCell = cell
             return cell
             
         default:
