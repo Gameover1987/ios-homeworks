@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-public class Publication {
+final class Publication {
     var author: String = ""
     var description: String = ""
     var image: UIImage
