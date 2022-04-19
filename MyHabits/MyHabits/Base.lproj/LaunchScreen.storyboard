@@ -3,6 +3,7 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,16 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenIcon" translatesAutoresizingMaskIntoConstraints="NO" id="iPb-bj-f3g">
-                                <rect key="frame" x="122" y="286" width="170" height="164"/>
+                                <rect key="frame" x="147" y="308" width="120" height="120"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyHabits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRz-rd-0Yu">
+                                <rect key="frame" x="163" y="637" width="88" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" name="purple"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iPb-bj-f3g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="286" id="46B-3w-NYG"/>
                             <constraint firstItem="iPb-bj-f3g" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7kq-gg-WiF"/>
-                            <constraint firstItem="iPb-bj-f3g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="hzK-My-mhR"/>
-                            <constraint firstItem="iPb-bj-f3g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="mwN-uT-7zk"/>
+                            <constraint firstItem="dRz-rd-0Yu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ohq-rV-kMR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dRz-rd-0Yu" secondAttribute="bottom" constant="75" id="V9E-DC-0uX"/>
                             <constraint firstItem="iPb-bj-f3g" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="qhM-6w-7VV"/>
                         </constraints>
                     </view>
@@ -38,6 +44,9 @@
     </scenes>
     <resources>
         <image name="LaunchScreenIcon" width="120" height="120"/>
+        <namedColor name="purple">
+            <color red="0.63099998235702515" green="0.086000002920627594" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
