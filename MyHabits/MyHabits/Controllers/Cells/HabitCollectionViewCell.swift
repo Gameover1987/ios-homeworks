@@ -99,10 +99,13 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     @objc private func changeStatusHabit() {
         let data = HabitsStore.instance.habits[indexElement!]
         guard !data.isAlreadyTakenToday else { return }
+        
         statusButton.setImage(UIImage(systemName: "checkmark.circle.fill")!, for: .normal)
         HabitsStore.instance.track(HabitsStore.instance.habits[indexElement!])
+        
         let nameNotification = Notification.Name(rawValue: GlobalConstants.progressCellNotificationKey)
         NotificationCenter.default.post(name: nameNotification, object: nil)
+        
         self.counterLabel.text = "Счётчик: \(HabitsStore.instance.habits[indexElement!].trackDates.count)"
     }
 }
