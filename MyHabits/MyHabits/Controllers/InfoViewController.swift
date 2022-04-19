@@ -7,29 +7,15 @@ final class InfoViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Информация"
-        view.addSubview(scrollView)
-        scrollView.addSubview(informationTextView)
+        view.addSubview(informationTextView)
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-
-            informationTextView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            informationTextView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            informationTextView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            informationTextView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            informationTextView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            informationTextView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+            informationTextView.topAnchor.constraint(equalTo: view.topAnchor),
+            informationTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            informationTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            informationTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.toAutoLayout()
-        return scrollView
-    }()
     
     private var informationTextView: UITextView = {
         let textView = UITextView()
