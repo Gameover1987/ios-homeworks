@@ -32,11 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         infoNavigationController.tabBarItem = itemInfoView
         
         let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = .red
         tabBarController.viewControllers = [habitsNavigationController, infoNavigationController]
         tabBarController.selectedViewController = habitsNavigationController
         
-        tabBarController.tabBar.tintColor = .black
         tabBarController.tabBar.unselectedItemTintColor = .gray
+        tabBarController.tabBar.tintColor = UIColor(named: "purple")
         tabBarController.tabBar.backgroundColor = UIColor(named: "white")
         tabBarController.tabBar.layer.borderWidth = 1
         tabBarController.tabBar.layer.borderColor = UIColorUtils.FromRGB(red: 189, green: 189, blue: 194).cgColor

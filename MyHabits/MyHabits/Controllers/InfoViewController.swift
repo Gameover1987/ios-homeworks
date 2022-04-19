@@ -35,14 +35,14 @@ final class InfoViewController: UIViewController {
         let textView = UITextView()
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = false
-        textView.attributedText = getFormatedInforamtionText()
+        textView.attributedText = getFormattedInforamtionText()
         textView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         textView.toAutoLayout()
         return textView
     }()
     
     
-    private static func getFormatedInforamtionText() -> NSAttributedString {
+    private static func getFormattedInforamtionText() -> NSAttributedString {
         let string = informationText as NSString
         let attributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20.0)])
         let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20.0)]
