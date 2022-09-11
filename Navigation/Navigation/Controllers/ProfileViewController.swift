@@ -6,7 +6,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        #if DEBUG
+            view.backgroundColor = .white
+        #else
+            view.backgroundColor = .red
+        #endif
         
         view.addSubview(tableContents)
         tableContents.register(PhotosTableViewCell.self, forCellReuseIdentifier: ProfileViewController.photosCellId)
