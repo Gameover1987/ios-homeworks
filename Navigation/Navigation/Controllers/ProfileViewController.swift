@@ -10,7 +10,7 @@ class ProfileViewController: UIViewController {
         
         view.addSubview(tableContents)
         tableContents.register(PhotosTableViewCell.self, forCellReuseIdentifier: ProfileViewController.photosCellId)
-        tableContents.register(PublicationTableViewCell.self, forCellReuseIdentifier: ProfileViewController.publicationCellId)
+        tableContents.register(PostTableViewCell.self, forCellReuseIdentifier: ProfileViewController.publicationCellId)
         tableContents.separatorStyle = .singleLine
         tableContents.dataSource = self
         tableContents.delegate = self
@@ -37,8 +37,9 @@ class ProfileViewController: UIViewController {
     
     private var tableContents: UITableView = {
         let table = UITableView.init(frame:  CGRect.zero, style: .grouped)
-        //table.backgroundColor = UIColorUtils.CreateFromRGB(red: 209, green: 209, blue: 214)
+     
         table.toAutoLayout()
+        
         return table
     }()
     
@@ -67,7 +68,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell: PhotosTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewController.photosCellId, for: indexPath) as? PhotosTableViewCell else { fatalError() }
             return cell
         default:
-            guard let cell: PublicationTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewController.publicationCellId, for: indexPath) as? PublicationTableViewCell else { fatalError() }
+            guard let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewController.publicationCellId, for: indexPath) as? PostTableViewCell else { fatalError() }
             let data = publications[indexPath.row]
             cell.update(name: data.author, image: data.image, description: data.description, countLikes: data.likes, countViews: data.views)
             return cell
