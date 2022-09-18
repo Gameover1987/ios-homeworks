@@ -1,9 +1,3 @@
-//
-//  StorageService.h
-//  StorageService
-//
-//  Created by Вячеслав on 11.09.2022.
-//
 
 #import <Foundation/Foundation.h>
 

@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-public final class Post {
+public struct Post {
     public var author: String = ""
     public var description: String = ""
     public var image: UIImage
