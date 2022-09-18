@@ -1,7 +1,7 @@
 
 import UIKit
 
-class PublicationTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell {
 
     private lazy var authorPostLabel: UILabel = {
         let label = UILabel()
