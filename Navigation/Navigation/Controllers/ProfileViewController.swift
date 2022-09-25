@@ -74,6 +74,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             guard let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewController.publicationCellId, for: indexPath) as? PostTableViewCell else { fatalError() }
             let data = DataService.shared.publications[indexPath.row]
+            
             cell.update(name: data.author, image: data.image, description: data.description, countLikes: data.likes, countViews: data.views)
             return cell
         }

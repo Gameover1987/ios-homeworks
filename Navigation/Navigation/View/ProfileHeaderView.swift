@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SnapKit
 
 public class ProfileConstraints {
     public static let imageWidth = 130.0
@@ -19,30 +20,38 @@ public class ProfileHeaderView : UIView {
         addSubview(statusTextField)
         addSubview(setStatusButton)
         
-        NSLayoutConstraint.activate([
-            profileImage.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: ProfileConstraints.defaultMargin),
-            profileImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: ProfileConstraints.defaultMargin),
-            profileImage.widthAnchor.constraint(equalToConstant: ProfileConstraints.imageWidth),
-            profileImage.heightAnchor.constraint(equalToConstant: ProfileConstraints.imageHeight),
-            
-            fullNameLabel.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: ProfileConstraints.defaultMargin),
-            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: ProfileConstraints.headerMargin),
-            fullNameLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+        profileImage.snp.makeConstraints { make -> Void in
+            make.left.equalTo(safeAreaLayoutGuide).offset(ProfileConstraints.defaultMargin)
+            make.top.equalTo(safeAreaLayoutGuide).offset(ProfileConstraints.defaultMargin)
+            make.width.equalTo(ProfileConstraints.imageWidth)
+            make.height.equalTo(ProfileConstraints.imageHeight)
+        }
 
-            statusLabel.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),
-            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 30),
-            statusLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+        fullNameLabel.snp.makeConstraints{ make -> Void in
+            make.left.equalTo(profileImage.snp.right).offset(ProfileConstraints.defaultMargin)
+            make.top.equalTo(safeAreaLayoutGuide).offset(ProfileConstraints.headerMargin)
+            make.right.equalTo(safeAreaLayoutGuide.snp.right)
+        }
 
-            statusTextField.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 16),
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 4),
-            statusTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            setStatusButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
-            setStatusButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 16),
-            setStatusButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor,constant: 0),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        statusLabel.snp.makeConstraints { make -> Void in
+            make.left.equalTo(profileImage.snp.right).offset(ProfileConstraints.defaultMargin)
+            make.top.equalTo(fullNameLabel.snp.bottom).offset(30)
+            make.right.equalTo(safeAreaLayoutGuide)
+        }
+
+        statusTextField.snp.makeConstraints{ make -> Void in
+            make.left.equalTo(profileImage.snp.right).offset(ProfileConstraints.defaultMargin)
+            make.top.equalTo(statusLabel.snp.bottom).offset(4)
+            make.right.equalTo(safeAreaLayoutGuide).offset(ProfileConstraints.defaultMargin * -1)
+            make.height.equalTo(40)
+        }
+
+        setStatusButton.snp.makeConstraints{make -> Void in
+            make.left.equalTo(safeAreaLayoutGuide).offset(ProfileConstraints.defaultMargin)
+            make.top.equalTo(profileImage.snp.bottom).offset(ProfileConstraints.defaultMargin)
+            make.right.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(50)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -103,7 +112,7 @@ public class ProfileHeaderView : UIView {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
         
         button.toAutoLayout()
         return button

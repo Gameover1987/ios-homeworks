@@ -1,8 +1,11 @@
 
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
 
+    private let _imageProcessor = ImageProcessor()
+    
     private lazy var authorPostLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -62,7 +65,10 @@ class PostTableViewCell: UITableViewCell {
     
     public func update(name: String, image: UIImage, description: String, countLikes: Int, countViews: Int) {
         authorPostLabel.text = name
-        postImageView.image = image
+        
+        _imageProcessor.processImage(sourceImage: image, filter: ColorFilter.bloom(intensity: 0.5), completion: { processedImage -> Void in
+            postImageView.image = processedImage
+        })
         postDescriptionLabel.text = description
         postCountLikes.text = "Likes: \(countLikes)"
         postCountViews.text = "Views: \(countViews)"
