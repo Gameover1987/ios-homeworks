@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Creating chilren viewcontrollers
         let feedViewController = FeedViewController()
         feedViewController.title = "Feed"
-        let profileViewController = LoginViewController()
+        let profileViewController = LoginViewController(userService: CurrentUserService())
         profileViewController.title = "Profile"
         
         // Creating tab bar items

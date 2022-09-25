@@ -90,6 +90,10 @@ public class LoginView : UIView {
     
     public var loginRequest: (() -> ())?
     
+    public func getLogin() -> String {
+        return loginInputTextField.text ?? String()
+    }
+    
     public func arrange(parentView: UIView) {
         
         addSubview(scrollView)
