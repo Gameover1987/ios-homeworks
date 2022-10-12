@@ -49,6 +49,12 @@ public class ProfileHeaderView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public func setUser(user : User) {
+        profileImage.image = user.avatar
+        statusLabel.text = user.status
+        fullNameLabel.text = user.fullName
+    }
+    
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = imageView.frame.height / 2

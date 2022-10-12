@@ -64,10 +64,6 @@ extension PhotosViewController: UICollectionViewDataSource {
     }
 }
 
-
-
-
-
 // MARK: - Delegate
 
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
