@@ -19,10 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let feedViewController = FeedViewController()
         feedViewController.title = "Feed"
         
+        let myLoginFactory = MyLoginFactory()
+        let loginInspector = myLoginFactory.makeLoginInspector()
+        
 #if DEBUG
-        let profileViewController = LoginViewController(userService: TestUserService())
+        let profileViewController = LoginViewController(userService: TestUserService(), loginDelegate: loginInspector)
 #else
-        let profileViewController = LoginViewController(userService: CurrentUserService())
+        let profileViewController = LoginViewController(userService: CurrentUserService(), loginDelegate: loginInspector)
 #endif
        
         profileViewController.title = "Profile"
