@@ -6,10 +6,13 @@ class LoginViewController : UIViewController {
     
     var loginView: LoginView!
     
+    var loginDelegate: LoginViewControllerDelegate
+    
     private let userService : UserService
 
-    init(userService: UserService) {
+    init(userService: UserService, loginDelegate: LoginViewControllerDelegate) {
         self.userService = userService
+        self.loginDelegate = loginDelegate
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -24,20 +27,19 @@ class LoginViewController : UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         loginView = LoginView()
+        
         loginView.loginRequest = { [self] in
             let user = userService.getUser(login: loginView.getLogin())
-            if (user != nil){
+            if (user == nil) {
+                showLoginAlert()
+                return
+            }
+                
+            if (loginDelegate.check(login: user!.login, password: loginView.getPassword())){
                 self.navigationController?.pushViewController(ProfileViewController(user: user!), animated: true)
             }
             else {
-                // create the alert
-                       let alert = UIAlertController(title: "Вход в систему", message: "Пользователь с таким логином не найден", preferredStyle: UIAlertController.Style.alert)
-
-                       // add an action (button)
-                       alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                       // show the alert
-                       self.present(alert, animated: true, completion: nil)
+                showLoginAlert()
             }
         }
         loginView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,5 +73,15 @@ class LoginViewController : UIViewController {
 
     @objc fileprivate func willHideKeyboard(_ notification: NSNotification) {
         loginView.handleHideKeyboard(notification)
+    }
+    
+    private func showLoginAlert(){
+        let alert = UIAlertController(title: "Вход в систему", message: "Пользователь с такими учетными данными не найден", preferredStyle: UIAlertController.Style.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
 }
