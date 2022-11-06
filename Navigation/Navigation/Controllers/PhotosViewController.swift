@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 final class PhotosViewController: UIViewController {
 
+    private let imgFacade = ImagePublisherFacade()
+    
+    private var downloadedImages: [UIImage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +38,14 @@ final class PhotosViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        imgFacade.subscribe(self)
+        imgFacade.addImagesWithTimer(time: TimeInterval(0.2), repeat: PhotoStorage.instance.photos.count)
+    }
+    
+    deinit {
+        imgFacade.removeSubscription(for: self)
+        imgFacade.rechargeImageLibrary()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +65,7 @@ extension PhotosViewController: UICollectionViewDataSource {
     
     // Сколько ячеек, будет в одной секции
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PhotoStorage.instance.photos.count
+        return downloadedImages.count
     }
     
     // Заполнение ячеек данными.
@@ -82,7 +95,7 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
         return floor(finalWidth)
     }
 
-    // Расстоновка отсутпов между ячейками.
+    // Расстановка отсутпов между ячейками.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
@@ -94,4 +107,17 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
+}
+
+extension PhotosViewController : ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        self.downloadedImages.removeAll()
+        
+        images.forEach {
+            downloadedImages.append($0)
+        }
+        
+        self.collectionView.reloadData()
+    }
+    
 }
