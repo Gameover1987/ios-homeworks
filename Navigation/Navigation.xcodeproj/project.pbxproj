@@ -34,11 +34,13 @@
 		80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56C17276F98250079BC17 /* UIExtensions.swift */; };
 		80DC8B8C27F9EC79000A4D5A /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC8B8B27F9EC79000A4D5A /* PhotosTableViewCell.swift */; };
 		80DC8B8E27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC8B8D27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift */; };
+		80DD99EA29263E5200F7E26E /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DD99E929263E5200F7E26E /* FeedModel.swift */; };
 		80E084BE27A57BC3004B100D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E084BD27A57BC3004B100D /* LoginViewController.swift */; };
 		80E084C027A57E1B004B100D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E084BF27A57E1B004B100D /* LoginView.swift */; };
 		80E0D7F627FB127200CAE562 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0D7F527FB127200CAE562 /* Photo.swift */; };
 		80E0D7F827FB1F8300CAE562 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0D7F727FB1F8300CAE562 /* PhotosViewController.swift */; };
 		80E6E38C2774DFCF0088683F /* UITextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */; };
+		80E795DD29253E1300FBD109 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E795DC29253E1300FBD109 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,11 +96,13 @@
 		80D56C17276F98250079BC17 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		80DC8B8B27F9EC79000A4D5A /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		80DC8B8D27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		80DD99E929263E5200F7E26E /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		80E084BD27A57BC3004B100D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80E084BF27A57E1B004B100D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		80E0D7F527FB127200CAE562 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		80E0D7F727FB1F8300CAE562 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithPadding.swift; sourceTree = "<group>"; };
+		80E795DC29253E1300FBD109 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,7 @@
 				80CD9C07290EF2C900915E48 /* CurrentUserService.swift */,
 				80CD9C09290EF2FE00915E48 /* TestUserService.swift */,
 				80CD9C0B290EF32000915E48 /* PhotoStorage.swift */,
+				80DD99E929263E5200F7E26E /* FeedModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */,
+				80E795DC29253E1300FBD109 /* CustomButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -360,6 +366,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80E795DD29253E1300FBD109 /* CustomButton.swift in Sources */,
+				80DD99EA29263E5200F7E26E /* FeedModel.swift in Sources */,
 				80B34B9A27592EBB001357F8 /* AppDelegate.swift in Sources */,
 				80E0D7F827FB1F8300CAE562 /* PhotosViewController.swift in Sources */,
 				80CD9C06290EF2A400915E48 /* UserService.swift in Sources */,
