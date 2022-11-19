@@ -78,12 +78,11 @@ public class LoginView : UIView {
         return stack
     }()
     
-    private var logInButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+    private lazy var logInButton: CustomButton = {
+        let button = CustomButton(title: "Log In")
         button.backgroundColor = UIColor.init(named: "vkColor")
         button.layer.cornerRadius = 10
-        button.addTarget(nil, action: #selector(buttonLogInAction), for: .touchUpInside)
+        button.touchButtonAction = buttonLogInAction
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -157,7 +156,7 @@ public class LoginView : UIView {
         scrollView.contentInset = contentInset
     }
     
-    @objc private func buttonLogInAction() {
+    @objc func buttonLogInAction() {
         loginRequest?()
     }
 }

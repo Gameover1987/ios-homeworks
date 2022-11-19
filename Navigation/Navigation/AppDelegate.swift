@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Creating chilren viewcontrollers
-        let feedViewController = FeedViewController()
+        let feedViewController = FeedViewController(secretWordChecker: FeedModel.shared)
         feedViewController.title = "Feed"
         
         let myLoginFactory = MyLoginFactory()

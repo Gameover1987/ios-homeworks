@@ -34,7 +34,7 @@ class LoginViewController : UIViewController {
                 showLoginAlert()
                 return
             }
-                
+
             if (loginDelegate.check(login: user!.login, password: loginView.getPassword())){
                 self.navigationController?.pushViewController(ProfileViewController(user: user!), animated: true)
             }
