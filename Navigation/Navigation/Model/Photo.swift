@@ -35,20 +35,6 @@ final class PhotoStorage {
     public static let instance: PhotoStorage = .init()
     
     private init() {
-//        let fileManager = FileManager.default
-//        let path = Bundle.main.resourceURL!
-//        let assetURL = path.appendingPathComponent("RockBands.bundle")
-//        
-//        do {
-//            let contents = try fileManager.contentsOfDirectory(at: assetURL, includingPropertiesForKeys: [URLResourceKey.nameKey, URLResourceKey.isDirectoryKey], options: .includesDirectoriesPostOrder)
-//            
-//            for item in contents
-//            {
-//                photos.append(Photo(  item.lastPathComponent))
-//            }
-//        }
-//        catch let error as NSError {
-//            print(error)
-//        }
+        
     }
 }

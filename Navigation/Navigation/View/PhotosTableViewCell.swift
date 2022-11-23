@@ -2,8 +2,6 @@
 import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
-
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -69,7 +67,7 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
         guard let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { fatalError() }
         guard indexPath.row <= 3 else { return cell }
         let photo = PhotoStorage.instance.photos[indexPath.row]
-        cell.update(photo)
+        cell.updateBy(image: UIImage(named: photo.fullName)!)
         return cell
     }
 }
