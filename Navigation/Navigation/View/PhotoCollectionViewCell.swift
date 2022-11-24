@@ -30,10 +30,10 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    func update(_ photo: Photo) {
+    func updateBy(image: UIImage) {
         photoImageView.clipsToBounds = true
         photoImageView.layer.cornerRadius = 6.0
-        photoImageView.image = UIImage(named: photo.fullName)
+        photoImageView.image = image
     }
 }
 

@@ -6,9 +6,20 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 final class PhotosViewController: UIViewController {
 
+    private var galleryImages: [UIImage] = []
+    private let imageProcessor = ImageProcessor()
+    
+    private let collectionView: UICollectionView = {
+        var viewLayout = UICollectionViewFlowLayout()
+        var collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
+        collectionView.backgroundColor = .white
+        return collectionView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +44,8 @@ final class PhotosViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        loadImages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,33 +53,55 @@ final class PhotosViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    private let collectionView: UICollectionView = {
-        var viewLayout = UICollectionViewFlowLayout()
-        var collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
-        collectionView.backgroundColor = .white
-        return collectionView
-    }()
+    func loadImages(){
+        self.collectionView.reloadData()
+        
+        var sourceImages = [UIImage]()
+        for image in PhotoStorage.instance.photos {
+            sourceImages.append(UIImage(named: image.fullName)!)
+        }
+        
+        // .noir 2 seconds qos: .userInteractive
+        // .posterize 2 seconds qos: .userInteractive
+        // colorInvert 3 seconds qos: .userInteractive
+        // colorInvert 4 seconds qos: .background
+        
+        let started = DispatchTime.now()
+        imageProcessor.processImagesOnThread(sourceImages: sourceImages, filter: .colorInvert, qos: .background, completion: { processedImages in
+            DispatchQueue.main.async {
+                self.galleryImages.removeAll()
+                for processedImage in processedImages {
+                    guard let processedImage = processedImage else { return }
+                    
+                    self.galleryImages.append(UIImage(cgImage: processedImage))
+                }
+                
+                self.collectionView.reloadData()
+                
+                let finished = DispatchTime.now()
+                let elapsedSeconds = (finished.uptimeNanoseconds - started.uptimeNanoseconds) / 1_000_000_000
+                
+                print("Processing images time \(elapsedSeconds) seconds")
+            }
+        })
+    }
 }
 
 extension PhotosViewController: UICollectionViewDataSource {
     
     // Сколько ячеек, будет в одной секции
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PhotoStorage.instance.photos.count
+        return galleryImages.count
     }
     
     // Заполнение ячеек данными.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { fatalError() }
-        let photo = PhotoStorage.instance.photos[indexPath.row]
-        cell.update(photo)
+        let image = galleryImages[indexPath.row]
+        cell.updateBy(image: image)
         return cell
     }
 }
-
-
-
-
 
 // MARK: - Delegate
 
