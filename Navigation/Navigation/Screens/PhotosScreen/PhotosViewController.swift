@@ -1,9 +1,3 @@
-//
-//  PhotosViewController.swift
-//  Navigation
-//
-//  Created by Вячеслав on 04.04.2022.
-//
 
 import UIKit
 import iOSIntPackage
@@ -67,7 +61,7 @@ final class PhotosViewController: UIViewController {
         // colorInvert 4 seconds qos: .background
         
         let started = DispatchTime.now()
-        imageProcessor.processImagesOnThread(sourceImages: sourceImages, filter: .colorInvert, qos: .background, completion: { processedImages in
+        imageProcessor.processImagesOnThread(sourceImages: sourceImages, filter: .posterize, qos: .userInteractive, completion: { processedImages in
             DispatchQueue.main.async {
                 self.galleryImages.removeAll()
                 for processedImage in processedImages {

@@ -3,6 +3,17 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    private let viewModel: FeedViewModel
+    
+    init(viewModel: FeedViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,8 +31,6 @@ class FeedViewController: UIViewController {
     }
     
     @objc func openPostButtonAction(sender: UIButton!) {
-        let postViewController = PostViewController()
-        postViewController.title = "Post"
-        self.navigationController?.pushViewController(postViewController, animated: true)
+        viewModel.goToPostAction?()
     }
 }

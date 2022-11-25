@@ -6,6 +6,17 @@ class LoginViewController : UIViewController {
     
     var loginView: LoginView!
     
+    private let viewModel: LoginViewModel
+    
+    init (viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -14,7 +25,7 @@ class LoginViewController : UIViewController {
         
         loginView = LoginView()
         loginView.loginRequest = {
-            self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+            self.viewModel.goToProfileAction?()
         }
         loginView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loginView)
