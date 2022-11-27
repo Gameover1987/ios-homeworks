@@ -100,7 +100,8 @@ public class LoginView : UIView {
     
     private var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
-        indicator.color = .white
+        
+        
         indicator.toAutoLayout()
         return indicator
     }()
@@ -158,8 +159,8 @@ public class LoginView : UIView {
             bruteForceButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -defaultSideMargin),
             bruteForceButton.heightAnchor.constraint(equalToConstant: buttonHeight),
             
-            activityIndicator.centerYAnchor.constraint(equalTo: bruteForceButton.centerYAnchor),
-            activityIndicator.trailingAnchor.constraint(equalTo: bruteForceButton.trailingAnchor, constant: -defaultSideMargin)
+            activityIndicator.centerYAnchor.constraint(equalTo: passwordInputTextField.centerYAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: passwordInputTextField.trailingAnchor, constant: -defaultSideMargin)
         ])
     }
     
