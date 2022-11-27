@@ -1,10 +1,22 @@
-
 import Foundation
 
+extension String {
+    mutating func replace(at index: Int, with character: Character) {
+        var stringArray = Array(self)
+        stringArray[index] = character
+        self = String(stringArray)
+    }
+}
+
 final class PasswordHelper {
-    private let upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ]
-    private let digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" ]
-    private let symbols = [".", ",", ";", ":", "!", "?", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "*", "=" ]
+    
+    private var digits:      String { return "0123456789" }
+    private var lowercase:   String { return "abcdefghijklmnopqrstuvwxyz" }
+    private var uppercase:   String { return "ABCDEFGHIJKLMNOPQRSTUVWXYZ" }
+    private var punctuation: String { return "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~" }
+    private var letters:     String { return lowercase + uppercase }
+    
+    var alphabet:   String { return digits + letters + punctuation }
     
     private init() {
         
@@ -12,43 +24,40 @@ final class PasswordHelper {
     
     public static let shared: PasswordHelper = .init()
     
-    public func generatePassowrd() -> String {
-        let alphabet = getAlphabet()
-        let passwordLength = Int.random(in: 10...20)
+    func generatePassoword(passwordLength: Int) -> String {
+        let alphabet = self.alphabet
       
-        let randomPassword = String((0..<passwordLength).compactMap{ _ in alphabet.randomElement() }.joined())
+        let randomPassword = String((0..<passwordLength).compactMap{ _ in  alphabet.randomElement() })
         return randomPassword
     }
     
-    public func bruteForce(password: String) -> String {
-        var result = String()
-        let alphabet = getAlphabet()
-        for position in (0...password.count-1) {
-            for alphabetItem in alphabet {
-                let character = password[position]
-                if (character == alphabetItem) {
-                    result += alphabetItem
-                    break
-                }
-            }
+    func bruteForce(passwordToUnlock: String) -> String {
+        let allowedCharacters: [String] = PasswordHelper.shared.alphabet.map { String($0) }
+        var password: String = ""
+        while password != passwordToUnlock {
+            password = PasswordHelper.shared.generateBruteForce(password, fromArray: allowedCharacters)
         }
-        
-        return result
+        return password
     }
     
-    private func getAlphabet() -> [String] {
-        let lowerCaseLetters = upperCaseLetters.map{ letter in
-            letter.lowercased()
+    private func generateBruteForce(_ string: String, fromArray array: [String]) -> String {
+        var str: String = string
+        if str.count <= 0 {
+            str.append(characterAt(index: 0, array))
+        } else {
+            str.replace(at: str.count - 1, with: characterAt(index: (indexOf(character: str.last!, array) + 1) % array.count, array))
+            if indexOf(character: str.last!, array) == 0 {
+                str = String(generateBruteForce(String(str.dropLast()), fromArray: array)) + String(str.last!)
+            }
         }
-        
-        return upperCaseLetters + lowerCaseLetters + digits + symbols
+        return str
     }
-}
-
-extension StringProtocol {
-    subscript(offset: Int) -> String {
-        let start = startIndex
-        let count = self.count
-        return String(self[index(startIndex, offsetBy: offset)])
+    
+    private func indexOf(character: Character, _ array: [String]) -> Int {
+        return array.firstIndex(of: String(character))!
+    }
+    
+    private func characterAt(index: Int, _ array: [String]) -> Character {
+        return index < array.count ? Character(array[index]) : Character("")
     }
 }

@@ -31,18 +31,13 @@ class LoginViewController : UIViewController {
             self.loginView.startBruteForceAnimation()
             
             DispatchQueue.global().async {
-                let randomPassword = PasswordHelper.shared.generatePassowrd()
-                let bruteForcedPassword = PasswordHelper.shared.bruteForce(password: randomPassword)
-                
-                sleep(3)
-                
+                let randomPassword = PasswordHelper.shared.generatePassoword(passwordLength: 3)
+                let bruteForcedPassword = PasswordHelper.shared.bruteForce(passwordToUnlock: randomPassword)
                 DispatchQueue.main.async {
                     self.loginView.stopBruteForceAnimation()
                     self.loginView.showBruteForcedPasswordForAMoment(password: bruteForcedPassword)
                 }
             }
-            
-            
         }
         loginView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loginView)
