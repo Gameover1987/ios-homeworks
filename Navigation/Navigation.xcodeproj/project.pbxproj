@@ -17,6 +17,7 @@
 		8083A95928D7296C000AFF15 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 8083A95828D7296C000AFF15 /* iOSIntPackage */; };
 		80B34B9A27592EBB001357F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B34B9927592EBB001357F8 /* AppDelegate.swift */; };
 		80B34BA327592EBC001357F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B34BA227592EBC001357F8 /* Assets.xcassets */; };
+		80B5046C2933AC5800EF7A3B /* PasswordHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5046B2933AC5800EF7A3B /* PasswordHelper.swift */; };
 		80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC307B275A1B4400D90FCA /* FeedViewController.swift */; };
 		80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */; };
 		80CC3081275A1BAF00D90FCA /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC3080275A1BAF00D90FCA /* PostViewController.swift */; };
@@ -80,6 +81,7 @@
 		80B34B9927592EBB001357F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80B34BA227592EBC001357F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80B34BA727592EBC001357F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80B5046B2933AC5800EF7A3B /* PasswordHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordHelper.swift; sourceTree = "<group>"; };
 		80CC307B275A1B4400D90FCA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		80CC3080275A1BAF00D90FCA /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				80245B5228CDDEBB00789893 /* DataService.swift */,
 				80E0D7F527FB127200CAE562 /* Photo.swift */,
+				80B5046B2933AC5800EF7A3B /* PasswordHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				80DD1557293159CB0044747A /* ProfileViewModel.swift in Sources */,
 				80DD154F293156600044747A /* LoginViewModel.swift in Sources */,
 				80245B5328CDDEBB00789893 /* DataService.swift in Sources */,
+				80B5046C2933AC5800EF7A3B /* PasswordHelper.swift in Sources */,
 				80DD15642931624A0044747A /* PhotosCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

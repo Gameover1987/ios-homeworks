@@ -24,8 +24,25 @@ class LoginViewController : UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         loginView = LoginView()
-        loginView.loginRequest = {
+        loginView.loginAction = {
             self.viewModel.goToProfileAction?()
+        }
+        loginView.bruteForceAction = {
+            self.loginView.startBruteForceAnimation()
+            
+            DispatchQueue.global().async {
+                let randomPassword = PasswordHelper.shared.generatePassowrd()
+                let bruteForcedPassword = PasswordHelper.shared.bruteForce(password: randomPassword)
+                
+                sleep(3)
+                
+                DispatchQueue.main.async {
+                    self.loginView.stopBruteForceAnimation()
+                    self.loginView.showBruteForcedPasswordForAMoment(password: bruteForcedPassword)
+                }
+            }
+            
+            
         }
         loginView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loginView)

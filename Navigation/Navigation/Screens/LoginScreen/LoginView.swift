@@ -88,7 +88,25 @@ public class LoginView : UIView {
         return button
     }()
     
-    public var loginRequest: (() -> ())?
+    private var bruteForceButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Brute force", for: .normal)
+        button.backgroundColor = UIColor.init(named: "vkColor")
+        button.layer.cornerRadius = 10
+        button.addTarget(nil, action: #selector(buttonBruteForceAction), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .white
+        indicator.toAutoLayout()
+        return indicator
+    }()
+    
+    public var loginAction: (() -> Void)?
+    public var bruteForceAction: (() -> Void)?
     
     public func arrange(parentView: UIView) {
         
@@ -97,6 +115,8 @@ public class LoginView : UIView {
         contentView.addSubview(vkLogo)
         contentView.addSubview(inputFieldStackView)
         contentView.addSubview(logInButton)
+        contentView.addSubview(bruteForceButton)
+        contentView.addSubview(activityIndicator)
         inputFieldStackView.addArrangedSubview(loginInputTextField)
         inputFieldStackView.addArrangedSubview(passwordInputTextField)
         
@@ -131,8 +151,37 @@ public class LoginView : UIView {
             logInButton.topAnchor.constraint(equalTo: inputFieldStackView.bottomAnchor, constant: defaultSideMargin),
             logInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: defaultSideMargin),
             logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -defaultSideMargin),
-            logInButton.heightAnchor.constraint(equalToConstant: buttonHeight)
+            logInButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+            
+            bruteForceButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: defaultSideMargin),
+            bruteForceButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: defaultSideMargin),
+            bruteForceButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -defaultSideMargin),
+            bruteForceButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+            
+            activityIndicator.centerYAnchor.constraint(equalTo: bruteForceButton.centerYAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: bruteForceButton.trailingAnchor, constant: -defaultSideMargin)
         ])
+    }
+    
+    public func startBruteForceAnimation() {
+        activityIndicator.startAnimating()
+    }
+    
+    public func stopBruteForceAnimation() {
+        activityIndicator.stopAnimating()
+    }
+    
+    public func showBruteForcedPasswordForAMoment(password: String){
+        passwordInputTextField.isSecureTextEntry = false
+        passwordInputTextField.text = password
+        
+        DispatchQueue.global().async {
+            sleep(3)
+            
+            DispatchQueue.main.async {
+                self.passwordInputTextField.isSecureTextEntry =  true
+            }
+        }
     }
     
     public func handleShowKeyboard(_ notification: NSNotification) {
@@ -150,6 +199,10 @@ public class LoginView : UIView {
     }
     
     @objc private func buttonLogInAction() {
-        loginRequest?()
+        loginAction?()
+    }
+    
+    @objc private func buttonBruteForceAction() {
+        bruteForceAction?()
     }
 }
