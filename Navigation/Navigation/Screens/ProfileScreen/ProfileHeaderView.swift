@@ -58,6 +58,10 @@ public class ProfileHeaderView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateProfileImage(image: UIImage) {
+        profileImage.image = image
+    }
+    
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = imageView.frame.height / 2
@@ -66,7 +70,6 @@ public class ProfileHeaderView : UIView {
         imageView.layer.cornerRadius = 65
         imageView.clipsToBounds = true
         
-        imageView.image = UIImage(named: "Ava")
         imageView.toAutoLayout()
         return imageView
     }()

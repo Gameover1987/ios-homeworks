@@ -39,6 +39,9 @@
 		80E0D7F627FB127200CAE562 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0D7F527FB127200CAE562 /* Photo.swift */; };
 		80E0D7F827FB1F8300CAE562 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0D7F727FB1F8300CAE562 /* PhotosViewController.swift */; };
 		80E6E38C2774DFCF0088683F /* UITextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */; };
+		80E95F1D29366622005F0908 /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E95F1C29366622005F0908 /* Authorizer.swift */; };
+		80E95F1F293670E3005F0908 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E95F1E293670E3005F0908 /* ImageProvider.swift */; };
+		80E95F2129367108005F0908 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E95F2029367108005F0908 /* User.swift */; };
 		9D291857CC7A84F31BA8B807 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D4F4A5F4D470ED5F9207DB0 /* Pods_Navigation.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +105,9 @@
 		80E0D7F527FB127200CAE562 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		80E0D7F727FB1F8300CAE562 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithPadding.swift; sourceTree = "<group>"; };
+		80E95F1C29366622005F0908 /* Authorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorizer.swift; sourceTree = "<group>"; };
+		80E95F1E293670E3005F0908 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		80E95F2029367108005F0908 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,9 @@
 			children = (
 				80245B5228CDDEBB00789893 /* DataService.swift */,
 				80E0D7F527FB127200CAE562 /* Photo.swift */,
+				80E95F1C29366622005F0908 /* Authorizer.swift */,
+				80E95F1E293670E3005F0908 /* ImageProvider.swift */,
+				80E95F2029367108005F0908 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -476,11 +485,14 @@
 				80CC3081275A1BAF00D90FCA /* PostViewController.swift in Sources */,
 				80DC8B8E27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift in Sources */,
 				80E084C027A57E1B004B100D /* LoginView.swift in Sources */,
+				80E95F2129367108005F0908 /* User.swift in Sources */,
+				80E95F1D29366622005F0908 /* Authorizer.swift in Sources */,
 				80CC3083275A1C0800D90FCA /* InfoViewController.swift in Sources */,
 				80DD1557293159CB0044747A /* ProfileViewModel.swift in Sources */,
 				80DD154F293156600044747A /* LoginViewModel.swift in Sources */,
 				80245B5328CDDEBB00789893 /* DataService.swift in Sources */,
 				80DD15642931624A0044747A /* PhotosCoordinator.swift in Sources */,
+				80E95F1F293670E3005F0908 /* ImageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

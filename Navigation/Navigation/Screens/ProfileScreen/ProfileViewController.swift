@@ -4,9 +4,11 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     private let viewModel: ProfileViewModel
+    private let imageProvider: UserImageProviderProtocol
     
-    init(viewModel: ProfileViewModel) {
+    init(viewModel: ProfileViewModel, imageProvider: UserImageProviderProtocol) {
         self.viewModel = viewModel
+        self.imageProvider = imageProvider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -17,11 +19,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        #if DEBUG
-            view.backgroundColor = .white
-        #else
-            view.backgroundColor = .red
-        #endif
+#if DEBUG
+        view.backgroundColor = .white
+#else
+        view.backgroundColor = .red
+#endif
         
         view.addSubview(tableContents)
         tableContents.register(PhotosTableViewCell.self, forCellReuseIdentifier: ProfileViewController.photosCellId)
@@ -36,6 +38,29 @@ class ProfileViewController: UIViewController {
             tableContents.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableContents.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+        
+        DispatchQueue.global().async {
+            sleep(2)
+            
+            let result = self.imageProvider.getUserImageBy(name: "Ava")
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.tableHeader.updateProfileImage(image: image)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.handleImageDownloadError(error: error)
+                }
+            }
+        }
+    }
+    
+    private func handleImageDownloadError(error: ImageDownloadError) {
+        switch error {
+        case .imageNotFound:
+            showAlert(title: "App error", message: "Profile image not found!")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
