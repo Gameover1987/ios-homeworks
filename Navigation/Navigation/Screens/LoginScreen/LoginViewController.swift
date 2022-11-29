@@ -59,6 +59,7 @@ class LoginViewController : UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    // Я бы таймер использовал для напоминания пользователю о важных вещах
     private func timerAlertHandler(timer: Timer) {
         let buttonOK = { (_: UIAlertAction) -> Void in print("Yes button pressed") }
         let buttonCancel = { (_: UIAlertAction) ->  Void in self.alertContinuation() }
