@@ -14,7 +14,7 @@ final class ProfileCoordinator : Coordinator {
     
     func start() {
         let viewModel = ProfileViewModel(dataService: DataService.shared)
-        let viewController = ProfileViewController(viewModel: viewModel)
+        let viewController = ProfileViewController(viewModel: viewModel, imageProvider: ImageProvider.shared)
         
         viewModel.gotToPhotosAction = { [weak self] in
             self?.showPhotosScreen()

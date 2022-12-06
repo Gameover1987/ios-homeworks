@@ -7,9 +7,11 @@ class LoginViewController : UIViewController {
     var loginView: LoginView!
     
     private let viewModel: LoginViewModel
+    private let authorizer: AuthorizerProtocol
     
-    init (viewModel: LoginViewModel) {
+    init (viewModel: LoginViewModel, authorizer: AuthorizerProtocol) {
         self.viewModel = viewModel
+        self.authorizer = authorizer
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,8 +26,8 @@ class LoginViewController : UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         loginView = LoginView()
-        loginView.loginRequest = {
-            self.viewModel.goToProfileAction?()
+        loginView.loginRequest = { (login: String, password: String) in
+            self.performAuthorization(login, password)
         }
         loginView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loginView)
@@ -58,5 +60,32 @@ class LoginViewController : UIViewController {
 
     @objc fileprivate func willHideKeyboard(_ notification: NSNotification) {
         loginView.handleHideKeyboard(notification)
+    }
+    
+    private func performAuthorization (_ login: String, _ password: String) {
+        
+        do {
+            try authorizer.authorize(login: login, password: password)
+            self.viewModel.goToProfileAction?()
+        } catch AuthorizationError.userNotFound {
+            showAlert(title: "Auth error", message: "User not found!")
+        } catch AuthorizationError.userNotAuthorized {
+            showAlert(title: "Auth error", message: "User not authorized!")
+        }
+        catch {
+            fatalError("Unknown authorization error!")
+        }
+    }
+}
+
+extension UIViewController {
+    func showAlert(title: String, message: String) {
+//        let buttonOK = { (_: UIAlertAction) -> Void in print("OK button pressed") }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

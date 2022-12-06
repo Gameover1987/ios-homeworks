@@ -88,7 +88,7 @@ public class LoginView : UIView {
         return button
     }()
     
-    public var loginRequest: (() -> ())?
+    public var loginRequest: ((_ login: String, _ password: String) -> ())?
     
     public func arrange(parentView: UIView) {
         
@@ -150,6 +150,9 @@ public class LoginView : UIView {
     }
     
     @objc private func buttonLogInAction() {
-        loginRequest?()
+        let login = loginInputTextField.text!
+        let password = passwordInputTextField.text!
+        
+        loginRequest?(login, password)
     }
 }
