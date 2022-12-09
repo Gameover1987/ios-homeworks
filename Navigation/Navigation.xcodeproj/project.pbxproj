@@ -15,6 +15,8 @@
 		80245B5328CDDEBB00789893 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80245B5228CDDEBB00789893 /* DataService.swift */; };
 		805DC8C527DB4AE80070C37F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805DC8C427DB4AE80070C37F /* PostTableViewCell.swift */; };
 		8083A95928D7296C000AFF15 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 8083A95828D7296C000AFF15 /* iOSIntPackage */; };
+		80B29BDF293FB19500180776 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B29BDE293FB19500180776 /* NetworkManager.swift */; };
+		80B29BE2293FB1C800180776 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B29BE1293FB1C800180776 /* AppConfiguration.swift */; };
 		80B34B9A27592EBB001357F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B34B9927592EBB001357F8 /* AppDelegate.swift */; };
 		80B34BA327592EBC001357F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B34BA227592EBC001357F8 /* Assets.xcassets */; };
 		80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC307B275A1B4400D90FCA /* FeedViewController.swift */; };
@@ -79,6 +81,8 @@
 		80245B5228CDDEBB00789893 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		805DC8C227DB474F0070C37F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		805DC8C427DB4AE80070C37F /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		80B29BDE293FB19500180776 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		80B29BE1293FB1C800180776 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		80B34B9627592EBB001357F8 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B34B9927592EBB001357F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80B34BA227592EBC001357F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		805DC8C127DB47320070C37F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80B29BE0293FB19B00180776 /* Networking */,
 				80245B5228CDDEBB00789893 /* DataService.swift */,
 				80E0D7F527FB127200CAE562 /* Photo.swift */,
 				80E95F1C29366622005F0908 /* Authorizer.swift */,
@@ -151,6 +156,15 @@
 				80E95F2029367108005F0908 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		80B29BE0293FB19B00180776 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				80B29BDE293FB19500180776 /* NetworkManager.swift */,
+				80B29BE1293FB1C800180776 /* AppConfiguration.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		80B34B8D27592EBB001357F8 = {
@@ -471,6 +485,7 @@
 				80DD154B2931543D0044747A /* Coordinator.swift in Sources */,
 				80B34B9A27592EBB001357F8 /* AppDelegate.swift in Sources */,
 				80E0D7F827FB1F8300CAE562 /* PhotosViewController.swift in Sources */,
+				80B29BE2293FB1C800180776 /* AppConfiguration.swift in Sources */,
 				80E6E38C2774DFCF0088683F /* UITextFieldWithPadding.swift in Sources */,
 				805DC8C527DB4AE80070C37F /* PostTableViewCell.swift in Sources */,
 				80E084BE27A57BC3004B100D /* LoginViewController.swift in Sources */,
@@ -479,6 +494,7 @@
 				80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */,
 				80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */,
 				80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */,
+				80B29BDF293FB19500180776 /* NetworkManager.swift in Sources */,
 				80E0D7F627FB127200CAE562 /* Photo.swift in Sources */,
 				80DC8B8C27F9EC79000A4D5A /* PhotosTableViewCell.swift in Sources */,
 				80DD1553293158940044747A /* FeedViewModel.swift in Sources */,
