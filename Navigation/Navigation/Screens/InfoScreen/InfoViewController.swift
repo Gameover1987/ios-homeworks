@@ -2,22 +2,101 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-
+  
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .white
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.layer.cornerRadius = 10
+        label.layer.borderColor = UIColor.init(named: "vkColor")!.cgColor
+        label.layer.borderWidth = 2
+        label.textAlignment = .center
+        label.toAutoLayout()
+        return label
+    }()
+    
+    private lazy var rotationPeriodLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .white
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textAlignment = .center
+        label.toAutoLayout()
+        return label
+    }()
+    
+    private lazy var buttonAlert: UIButton = {
+        let button = UIButton(type: .custom) as UIButton
+        button.backgroundColor = .white
+        button.setTitle("Show alert", for: .normal)
+        button.addTarget(self, action: #selector(alertAction), for: .touchDown)
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
         self.title = "Information"
         
-        let buttonAlert = UIButton(type: .custom) as UIButton
-        buttonAlert.backgroundColor = .systemGray
-        buttonAlert.layer.cornerRadius = 10
-        buttonAlert.layer.borderWidth = 1
-        buttonAlert.layer.borderColor = UIColor.white.cgColor
-        buttonAlert.setTitle("Show alert", for: .normal)
-        buttonAlert.frame = CGRect(x: 100, y: 420, width: 200, height: 50)
-        buttonAlert.addTarget(self, action: #selector(alertAction), for: .touchDown)
+        view.addSubview(titleLabel)
+        view.addSubview(rotationPeriodLabel)
         view.addSubview(buttonAlert)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(-16)
+        }
+        
+        rotationPeriodLabel.snp.makeConstraints {make in
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(-16)
+        }
+        
+        buttonAlert.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.centerY.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Task 1
+        NetworkManager.request(forConfiguration: .todos) { [weak self] data, response, error in
+            guard let data = data else {return}
+            
+            do {
+                let serializedDictionary = try JSONSerialization.jsonObject(with: data, options: [])
+                if let dictionary = serializedDictionary as? [[String: Any]], let title = dictionary.randomElement()!["title"] as? String {
+                    DispatchQueue.main.async {
+                        self?.titleLabel.text = " " + title
+                    }
+                }
+            } catch let error {
+                print("⚠️ Error:", String(describing: error))
+            }
+        }
+        
+        // Task 2
+        NetworkManager.request(forConfiguration: .firstPlanet) { [weak self] data, response, error in
+            guard let data = data else {return}
+            
+            do {
+                let planet = try JSONDecoder().decode(Planet.self, from: data)
+                DispatchQueue.main.async {
+                    self?.rotationPeriodLabel.text = " The rotation period of the planet '\(planet.name)' = \(planet.rotationPeriod)"
+                }
+            } catch let error {
+                print("⚠️ Error:", String(describing: error))
+            }
+        }
     }
     
     @objc func alertAction(sender: UIButton) {

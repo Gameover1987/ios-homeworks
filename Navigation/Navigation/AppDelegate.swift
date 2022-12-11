@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow()
         self.window = window
-        config = AppConfiguration.planets
+        config = AppConfiguration.firstPlanet
         rootCoordinator = LoginCoordinator(window: window)
         rootCoordinator?.start()
         

@@ -66,8 +66,6 @@ class LoginViewController : UIViewController {
         
         do {
             try authorizer.authorize(login: login, password: password)
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            NetworkManager.request(forConfiguration: appDelegate.config)
             self.viewModel.goToProfileAction?()
         } catch AuthorizationError.userNotFound {
             showAlert(title: "Auth error", message: "User not found!")
