@@ -7,6 +7,8 @@ class InfoViewController: UIViewController {
         let label = UILabel()
         label.backgroundColor = .white
         label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.layer.cornerRadius = 10
         label.layer.borderColor = UIColor.init(named: "vkColor")!.cgColor
         label.layer.borderWidth = 2
