@@ -19,19 +19,14 @@ class InfoViewController: UIViewController {
         let label = UILabel()
         label.backgroundColor = .white
         label.font = UIFont.systemFont(ofSize: 14)
-        label.layer.cornerRadius = 10
-        label.layer.borderColor = UIColor.init(named: "vkColor")!.cgColor
-        label.layer.borderWidth = 2
+        label.textAlignment = .center
         label.toAutoLayout()
         return label
     }()
     
     private lazy var buttonAlert: UIButton = {
         let button = UIButton(type: .custom) as UIButton
-        button.backgroundColor = .systemGray
-        button.layer.cornerRadius = 10
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
+        button.backgroundColor = .white
         button.setTitle("Show alert", for: .normal)
         button.addTarget(self, action: #selector(alertAction), for: .touchDown)
         
@@ -81,6 +76,20 @@ class InfoViewController: UIViewController {
                     DispatchQueue.main.async {
                         self?.titleLabel.text = " " + title
                     }
+                }
+            } catch let error {
+                print("⚠️ Error:", String(describing: error))
+            }
+        }
+        
+        // Task 2
+        NetworkManager.request(forConfiguration: .firstPlanet) { [weak self] data, response, error in
+            guard let data = data else {return}
+            
+            do {
+                let planet = try JSONDecoder().decode(Planet.self, from: data)
+                DispatchQueue.main.async {
+                    self?.rotationPeriodLabel.text = " The rotation period of the planet '\(planet.name)' = \(planet.rotationPeriod)"
                 }
             } catch let error {
                 print("⚠️ Error:", String(describing: error))
