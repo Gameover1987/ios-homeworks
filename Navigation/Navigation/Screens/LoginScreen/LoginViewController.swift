@@ -26,18 +26,22 @@ class LoginViewController : UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         loginView = LoginView()
-        loginView.loginRequest = { (login: String, password: String) in
-            self.performAuthorization(login, password)
+        loginView.loginAction = { (login: String, password: String) in
+            self.signIn(login, password)
         }
+        loginView.signUpAction = { (login: String, password: String) in
+            self.signUp(login, password)
+        }
+        
         loginView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loginView)
-   
+        
         loginView.arrange(parentView: view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.willShowKeyboard(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -47,36 +51,51 @@ class LoginViewController : UIViewController {
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    
+        
         NotificationCenter.default.removeObserver(self)
     }
     
     @objc fileprivate func willShowKeyboard(_ notification: NSNotification) {
         loginView.handleShowKeyboard(notification)
     }
-
+    
     @objc fileprivate func willHideKeyboard(_ notification: NSNotification) {
         loginView.handleHideKeyboard(notification)
     }
     
-    private func performAuthorization (_ login: String, _ password: String) {
+    private func signIn (_ login: String, _ password: String) {
         
-        do {
-            try authorizer.authorize(login: login, password: password)
-            self.viewModel.goToProfileAction?()
-        } catch AuthorizationError.userNotFound {
-            showAlert(title: "Auth error", message: "User not found!")
-        } catch AuthorizationError.userNotAuthorized {
-            showAlert(title: "Auth error", message: "User not authorized!")
+        authorizer.checkCredentionals(login: login, password: password) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let user):
+                self.viewModel.goToProfileAction?()
+                
+            case .failure(let error):
+                self.showAlert(title: "Sign in error", message: error.localizedDescription)
+            }
         }
-        catch {
-            fatalError("Unknown authorization error!")
+    }
+    
+    private func signUp (_ login: String, _ password: String) {
+        authorizer.signUp(login: login, password: password) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let user):
+                self.showAlert(title: "Success", message: "User \(user.login) signed up successfully")
+                
+            case .failure(let error):
+                self.showAlert(title: "Sign up error", message: error.localizedDescription)
+            }
         }
     }
 }
+
 
 extension UIViewController {
     func showAlert(title: String, message: String) {

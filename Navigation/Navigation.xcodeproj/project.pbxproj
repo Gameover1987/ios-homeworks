@@ -209,11 +209,11 @@
 			children = (
 				80DD9AAE2946424E007C42A5 /* GoogleService-Info.plist */,
 				80B34BA727592EBC001357F8 /* Info.plist */,
-				80B34B9927592EBB001357F8 /* AppDelegate.swift */,
-				80B34BA227592EBC001357F8 /* Assets.xcassets */,
+				80FAFB2D2948D9B800F408AA /* Application */,
 				80E084C327A57E97004B100D /* CustomControls */,
-				805DC8C127DB47320070C37F /* Model */,
 				80D56C16276F98110079BC17 /* Extensions */,
+				805DC8C127DB47320070C37F /* Model */,
+				80FAFB2C2948D99D00F408AA /* Resources */,
 				80E084C127A57E54004B100D /* Screens */,
 			);
 			path = Navigation;
@@ -308,6 +308,22 @@
 				80E6E38B2774DFCF0088683F /* UITextFieldWithPadding.swift */,
 			);
 			path = CustomControls;
+			sourceTree = "<group>";
+		};
+		80FAFB2C2948D99D00F408AA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				80B34BA227592EBC001357F8 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		80FAFB2D2948D9B800F408AA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				80B34B9927592EBB001357F8 /* AppDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		AD51C863792957691F6BF996 /* Pods */ = {

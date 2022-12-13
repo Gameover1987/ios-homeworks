@@ -46,6 +46,7 @@ public class LoginView : UIView {
         loginTextFileld.layer.borderWidth = 0.5
         loginTextFileld.layer.borderColor = UIColor.lightGray.cgColor
         loginTextFileld.translatesAutoresizingMaskIntoConstraints = false
+        loginTextFileld.addTarget(self, action: #selector(loginOrPasswordTextChanged), for: .editingChanged)
         return loginTextFileld
     }()
     
@@ -61,6 +62,7 @@ public class LoginView : UIView {
         passwordTextFileld.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 50))
         passwordTextFileld.leftViewMode = .always
         passwordTextFileld.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextFileld.addTarget(self, action: #selector(loginOrPasswordTextChanged), for: .editingChanged)
         return passwordTextFileld
     }()
     
@@ -79,8 +81,10 @@ public class LoginView : UIView {
     }()
     
     private var logInButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.lightGray, for: .disabled)
         button.backgroundColor = UIColor.init(named: "vkColor")
         button.layer.cornerRadius = 10
         button.addTarget(nil, action: #selector(buttonLogInAction), for: .touchUpInside)
@@ -88,7 +92,20 @@ public class LoginView : UIView {
         return button
     }()
     
-    public var loginRequest: ((_ login: String, _ password: String) -> ())?
+    private var signUpButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Want join us? Sign up!", for: .normal)
+        
+        button.setTitleColor(UIColor.init(named: "vkColor"), for: .normal)
+        button.setTitleColor(.gray, for: .disabled)
+        button.layer.cornerRadius = 10
+        button.addTarget(nil, action: #selector(buttonSignUpAction), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    public var loginAction: ((_ login: String, _ password: String) -> ())?
+    public var signUpAction: ((_ login: String, _ password: String) -> ())?
     
     public func arrange(parentView: UIView) {
         
@@ -97,6 +114,7 @@ public class LoginView : UIView {
         contentView.addSubview(vkLogo)
         contentView.addSubview(inputFieldStackView)
         contentView.addSubview(logInButton)
+        contentView.addSubview(signUpButton)
         inputFieldStackView.addArrangedSubview(loginInputTextField)
         inputFieldStackView.addArrangedSubview(passwordInputTextField)
         
@@ -131,8 +149,15 @@ public class LoginView : UIView {
             logInButton.topAnchor.constraint(equalTo: inputFieldStackView.bottomAnchor, constant: defaultSideMargin),
             logInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: defaultSideMargin),
             logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -defaultSideMargin),
-            logInButton.heightAnchor.constraint(equalToConstant: buttonHeight)
+            logInButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+            
+            signUpButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -defaultSideMargin),
+            signUpButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: defaultSideMargin),
+            signUpButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -defaultSideMargin),
+            signUpButton.heightAnchor.constraint(equalToConstant: buttonHeight)
         ])
+        
+        loginOrPasswordTextChanged()
     }
     
     public func handleShowKeyboard(_ notification: NSNotification) {
@@ -153,6 +178,20 @@ public class LoginView : UIView {
         let login = loginInputTextField.text!
         let password = passwordInputTextField.text!
         
-        loginRequest?(login, password)
+        loginAction?(login, password)
+    }
+    
+    @objc private func buttonSignUpAction() {
+        let login = loginInputTextField.text!
+        let password = passwordInputTextField.text!
+        
+        signUpAction?(login, password)
+    }
+    
+    @objc private func loginOrPasswordTextChanged(){
+        let isEnabled = loginInputTextField.hasText && passwordInputTextField.hasText
+        
+        logInButton.isEnabled = isEnabled
+        signUpButton.isEnabled = isEnabled
     }
 }
