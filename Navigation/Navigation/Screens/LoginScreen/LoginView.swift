@@ -37,6 +37,7 @@ public class LoginView : UIView {
         let loginTextFileld = UITextField()
         loginTextFileld.backgroundColor = .systemGray6.withAlphaComponent(0.1)
         loginTextFileld.textColor = .black
+        loginTextFileld.keyboardType = .emailAddress
         loginTextFileld.attributedPlaceholder = NSAttributedString(string: "Email or phone", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         loginTextFileld.font = .systemFont(ofSize: 16.0)
         loginTextFileld.tintColor = UIColor(named: "vkColor")
