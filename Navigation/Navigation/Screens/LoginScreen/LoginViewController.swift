@@ -40,6 +40,11 @@ class LoginViewController : UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if (authorizer.currentUser != nil) {
+            authorizer.signOut()
+            loginView.resetLoginAndPassword()
+        }
+      
         super.viewWillAppear(animated)
         
         NotificationCenter.default.addObserver(self,
@@ -50,6 +55,7 @@ class LoginViewController : UIViewController {
                                                selector: #selector(self.willHideKeyboard(_:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,7 +78,7 @@ class LoginViewController : UIViewController {
             guard let self = self else { return }
             
             switch result {
-            case .success(let user):
+            case .success(_):
                 self.viewModel.goToProfileAction?()
                 
             case .failure(let error):

@@ -174,6 +174,11 @@ public class LoginView : UIView {
         scrollView.contentInset = contentInset
     }
     
+    public func resetLoginAndPassword(){
+        loginInputTextField.text = ""
+        passwordInputTextField.text = ""
+    }
+    
     @objc private func buttonLogInAction() {
         let login = loginInputTextField.text!
         let password = passwordInputTextField.text!
