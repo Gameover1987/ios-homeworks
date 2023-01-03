@@ -88,9 +88,14 @@ public class LoginView : UIView {
         return button
     }()
     
-    public var loginRequest: ((_ login: String, _ password: String) -> ())?
+    var loginRequest: ((_ login: String, _ password: String) -> ())?
     
-    public func arrange(parentView: UIView) {
+    func setUserData(user: User) {
+        loginInputTextField.text = user.login
+        passwordInputTextField.text = user.password
+    }
+    
+    func arrange(parentView: UIView) {
         
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -135,7 +140,7 @@ public class LoginView : UIView {
         ])
     }
     
-    public func handleShowKeyboard(_ notification: NSNotification) {
+    func handleShowKeyboard(_ notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.convert(keyboardFrame, from: nil)
@@ -144,7 +149,7 @@ public class LoginView : UIView {
         scrollView.contentInset = contentInset
     }
     
-    public func handleHideKeyboard(_ notification: NSNotification) {
+    func handleHideKeyboard(_ notification: NSNotification) {
         let contentInset: UIEdgeInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInset
     }

@@ -8,10 +8,12 @@ class LoginViewController : UIViewController {
     
     private let viewModel: LoginViewModel
     private let authorizer: AuthorizerProtocol
+    private let userProvider: UserProviderProtocol
     
-    init (viewModel: LoginViewModel, authorizer: AuthorizerProtocol) {
+    init (viewModel: LoginViewModel, authorizer: AuthorizerProtocol, userProvider: UserProviderProtocol) {
         self.viewModel = viewModel
         self.authorizer = authorizer
+        self.userProvider = userProvider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,8 +48,11 @@ class LoginViewController : UIViewController {
                                                selector: #selector(self.willHideKeyboard(_:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
+        
+        guard let user = userProvider.getStoredUser() else { return }
+        loginView.setUserData(user: user)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     
@@ -65,7 +70,9 @@ class LoginViewController : UIViewController {
     private func performAuthorization (_ login: String, _ password: String) {
         
         do {
-            try authorizer.authorize(login: login, password: password)
+            let user = try authorizer.authorize(login: login, password: password)
+            userProvider.storeUser(user: user)
+            
             self.viewModel.goToProfileAction?()
         } catch AuthorizationError.userNotFound {
             showAlert(title: "Auth error", message: "User not found!")

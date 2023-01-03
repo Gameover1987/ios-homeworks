@@ -21,7 +21,9 @@ final class LoginCoordinator : Coordinator {
         
         let loginViewModel = LoginViewModel()
         let authorizer = Authorizer.shared
-        let loginViewController = LoginViewController(viewModel: loginViewModel, authorizer: authorizer)
+        let loginViewController = LoginViewController(viewModel: loginViewModel,
+                                                      authorizer: authorizer,
+                                                      userProvider: UserProvider.shared)
         
         loginViewModel.goToProfileAction = { [weak self] in
             self?.showMainTabBar()

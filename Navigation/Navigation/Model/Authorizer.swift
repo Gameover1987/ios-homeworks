@@ -1,6 +1,6 @@
 
-import Foundation
 import UIKit
+import Realm
 
 protocol AuthorizerProtocol {
     func authorize(login: String, password: String) throws -> User
@@ -20,8 +20,9 @@ class Authorizer : AuthorizerProtocol {
     public static let shared: Authorizer = .init()
     
     func authorize(login: String, password: String) throws -> User {
-        if (login == "123") {
-            return User(login: "123", fullName: "Vyacheslav Nekrasov")
+        if (login == "Slava" && password == "123") {
+            let user = User(login: login, password: password, fullName: "Vyacheslav Nekrasov")
+            return user
         }
         
         if (login == "Vasya") {
