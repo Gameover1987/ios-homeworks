@@ -80,7 +80,6 @@ class LoginViewController : UIViewController {
 
 extension UIViewController {
     func showAlert(title: String, message: String) {
-//        let buttonOK = { (_: UIAlertAction) -> Void in print("OK button pressed") }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
