@@ -49,7 +49,19 @@ final class FavoritesViewController : UIViewController {
 }
 
 extension FavoritesViewController : UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive,
+                                              title: "Del") { [weak self] ( action, view, completionHandler) in
+            guard let self = self else {return}
+            let publication = self.viewModel.publications[indexPath.row]
+            self.viewModel.removePublication(publication: publication)
+            tableView.reloadData()
+        }
+        deleteAction.backgroundColor = .systemRed
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        return configuration
+    }
 }
 
 extension FavoritesViewController : UITableViewDataSource {
@@ -66,6 +78,7 @@ extension FavoritesViewController : UITableViewDataSource {
                     description: publication.text!,
                     countLikes: 0,
                     countViews: 0)
+        cell.hideFeedbackPanel()
         
         return cell
     }

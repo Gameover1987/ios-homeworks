@@ -49,7 +49,11 @@ final class CoreDataFavoritePublicationsStorage : FavoriteStorageProtocol {
     }
     
     func removeFromfavorites(publication: PublicationEntity) {
+        mainContext.delete(publication)
         
+        saveMainContext()
+        
+        fetchPublications()
     }
     
     private func isPublicationExists(author: String, text: String) -> Bool {

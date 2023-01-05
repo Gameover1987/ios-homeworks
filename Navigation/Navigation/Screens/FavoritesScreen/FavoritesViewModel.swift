@@ -17,4 +17,8 @@ final class FavoritesViewModel {
     }
     
     var searchString: String = ""
+    
+    func removePublication(publication: PublicationEntity) {
+        favoriteStorage.removeFromfavorites(publication: publication)
+    }
 }

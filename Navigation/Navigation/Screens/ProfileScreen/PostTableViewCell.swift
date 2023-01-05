@@ -63,7 +63,7 @@ class PostTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func update(name: String, image: UIImage, description: String, countLikes: Int, countViews: Int) {
+    func update(name: String, image: UIImage, description: String, countLikes: Int, countViews: Int) {
         authorPostLabel.text = name
         
         _imageProcessor.processImage(sourceImage: image, filter: ColorFilter.bloom(intensity: 0.5), completion: { processedImage -> Void in
@@ -72,6 +72,11 @@ class PostTableViewCell: UITableViewCell {
         postDescriptionLabel.text = description
         postCountLikes.text = "Likes: \(countLikes)"
         postCountViews.text = "Views: \(countViews)"
+    }
+    
+    func hideFeedbackPanel() {
+        postCountLikes.removeFromSuperview()
+        postCountViews.removeFromSuperview()
     }
     
     private func arrange() {
