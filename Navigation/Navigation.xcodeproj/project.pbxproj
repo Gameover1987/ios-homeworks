@@ -23,6 +23,12 @@
 		80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */; };
 		80CC3081275A1BAF00D90FCA /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC3080275A1BAF00D90FCA /* PostViewController.swift */; };
 		80CC3083275A1C0800D90FCA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC3082275A1C0800D90FCA /* InfoViewController.swift */; };
+		80CD95782966CFBC0055AA35 /* Navigation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80CD95762966CFBC0055AA35 /* Navigation.xcdatamodeld */; };
+		80CD957A2966D1620055AA35 /* FavoriteStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD95792966D1620055AA35 /* FavoriteStorageProtocol.swift */; };
+		80CD957C2966D4840055AA35 /* CoreDataFavoritePublicationsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD957B2966D4840055AA35 /* CoreDataFavoritePublicationsStorage.swift */; };
+		80CD957F2966D5990055AA35 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD957E2966D5990055AA35 /* FavoritesViewController.swift */; };
+		80CD95812966D5C00055AA35 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD95802966D5C00055AA35 /* FavoritesCoordinator.swift */; };
+		80CD95832966D5CF0055AA35 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD95822966D5CF0055AA35 /* FavoritesViewModel.swift */; };
 		80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */; };
 		80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56C17276F98250079BC17 /* UIExtensions.swift */; };
 		80D6CC792943B7DB00E6E679 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6CC782943B7DB00E6E679 /* Planet.swift */; };
@@ -99,6 +105,12 @@
 		80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		80CC3080275A1BAF00D90FCA /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		80CC3082275A1C0800D90FCA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		80CD95772966CFBC0055AA35 /* Navigation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Navigation.xcdatamodel; sourceTree = "<group>"; };
+		80CD95792966D1620055AA35 /* FavoriteStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStorageProtocol.swift; sourceTree = "<group>"; };
+		80CD957B2966D4840055AA35 /* CoreDataFavoritePublicationsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFavoritePublicationsStorage.swift; sourceTree = "<group>"; };
+		80CD957E2966D5990055AA35 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		80CD95802966D5C00055AA35 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		80CD95822966D5CF0055AA35 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		80D56C17276F98250079BC17 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		80D6CC782943B7DB00E6E679 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
@@ -165,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				80B29BE0293FB19B00180776 /* Networking */,
+				80CD95752966CF320055AA35 /* Storage */,
 				80245B5228CDDEBB00789893 /* DataService.swift */,
 				80E0D7F527FB127200CAE562 /* Photo.swift */,
 				80E95F1C29366622005F0908 /* Authorizer.swift */,
@@ -217,6 +230,26 @@
 				80E084C127A57E54004B100D /* Screens */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		80CD95752966CF320055AA35 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				80CD95762966CFBC0055AA35 /* Navigation.xcdatamodeld */,
+				80CD95792966D1620055AA35 /* FavoriteStorageProtocol.swift */,
+				80CD957B2966D4840055AA35 /* CoreDataFavoritePublicationsStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		80CD957D2966D5740055AA35 /* FavoritesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				80CD957E2966D5990055AA35 /* FavoritesViewController.swift */,
+				80CD95802966D5C00055AA35 /* FavoritesCoordinator.swift */,
+				80CD95822966D5CF0055AA35 /* FavoritesViewModel.swift */,
+			);
+			path = FavoritesScreen;
 			sourceTree = "<group>";
 		};
 		80D56C16276F98110079BC17 /* Extensions */ = {
@@ -291,6 +324,7 @@
 		80E084C127A57E54004B100D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				80CD957D2966D5740055AA35 /* FavoritesScreen */,
 				80DD1549293151CA0044747A /* InfoScreen */,
 				80DD1548293151B90044747A /* PostScreen */,
 				80DD1547293151A00044747A /* PhotosScreen */,
@@ -521,6 +555,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CD95832966D5CF0055AA35 /* FavoritesViewModel.swift in Sources */,
+				80CD957A2966D1620055AA35 /* FavoriteStorageProtocol.swift in Sources */,
 				80DD156029315DAF0044747A /* PostViewModel.swift in Sources */,
 				80DD15552931599F0044747A /* ProfileCoordinator.swift in Sources */,
 				80DD15512931587A0044747A /* FeedCoordinator.swift in Sources */,
@@ -533,8 +569,10 @@
 				80E084BE27A57BC3004B100D /* LoginViewController.swift in Sources */,
 				80DD154D293155140044747A /* LoginCoordinator.swift in Sources */,
 				80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */,
+				80CD957C2966D4840055AA35 /* CoreDataFavoritePublicationsStorage.swift in Sources */,
 				80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */,
 				80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */,
+				80CD95812966D5C00055AA35 /* FavoritesCoordinator.swift in Sources */,
 				80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */,
 				80B29BDF293FB19500180776 /* NetworkManager.swift in Sources */,
 				80E0D7F627FB127200CAE562 /* Photo.swift in Sources */,
@@ -542,6 +580,7 @@
 				80DD1553293158940044747A /* FeedViewModel.swift in Sources */,
 				80CC3081275A1BAF00D90FCA /* PostViewController.swift in Sources */,
 				80DC8B8E27F9EDF7000A4D5A /* PhotoCollectionViewCell.swift in Sources */,
+				80CD957F2966D5990055AA35 /* FavoritesViewController.swift in Sources */,
 				80E084C027A57E1B004B100D /* LoginView.swift in Sources */,
 				80E95F2129367108005F0908 /* User.swift in Sources */,
 				80E95F1D29366622005F0908 /* Authorizer.swift in Sources */,
@@ -552,6 +591,7 @@
 				80DD15642931624A0044747A /* PhotosCoordinator.swift in Sources */,
 				80E95F1F293670E3005F0908 /* ImageProvider.swift in Sources */,
 				80D6CC792943B7DB00E6E679 /* Planet.swift in Sources */,
+				80CD95782966CFBC0055AA35 /* Navigation.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +789,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47S9Q57UGQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -777,6 +818,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47S9Q57UGQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -884,6 +926,19 @@
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		80CD95762966CFBC0055AA35 /* Navigation.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				80CD95772966CFBC0055AA35 /* Navigation.xcdatamodel */,
+			);
+			currentVersion = 80CD95772966CFBC0055AA35 /* Navigation.xcdatamodel */;
+			path = Navigation.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 80B34B8E27592EBB001357F8 /* Project object */;
 }
