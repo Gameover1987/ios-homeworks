@@ -74,6 +74,12 @@ class LoginViewController : UIViewController {
     
     private func signIn (_ login: String, _ password: String) {
         
+#if DEBUG
+        self.viewModel.goToProfileAction?()
+#else
+      
+
+        
         authorizer.checkCredentionals(login: login, password: password) { [weak self] result in
             guard let self = self else { return }
             
@@ -85,6 +91,7 @@ class LoginViewController : UIViewController {
                 self.showAlert(title: "Sign in error", message: error.localizedDescription)
             }
         }
+#endif
     }
     
     private func signUp (_ login: String, _ password: String) {

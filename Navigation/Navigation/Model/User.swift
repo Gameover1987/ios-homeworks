@@ -10,4 +10,3 @@ class User {
         self.login = login
     }
 }
-

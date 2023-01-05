@@ -195,7 +195,12 @@ public class LoginView : UIView {
     }
     
     @objc private func loginOrPasswordTextChanged(){
-        let isEnabled = loginInputTextField.hasText && passwordInputTextField.hasText
+        var isEnabled = false
+#if DEBUG
+        isEnabled = true
+#else
+        isEnabled = loginInputTextField.hasText && passwordInputTextField.hasText
+#endif
         
         logInButton.isEnabled = isEnabled
         signUpButton.isEnabled = isEnabled
