@@ -15,6 +15,7 @@
 		80245B5328CDDEBB00789893 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80245B5228CDDEBB00789893 /* DataService.swift */; };
 		805DC8C527DB4AE80070C37F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805DC8C427DB4AE80070C37F /* PostTableViewCell.swift */; };
 		8083A95928D7296C000AFF15 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 8083A95828D7296C000AFF15 /* iOSIntPackage */; };
+		80AB807829675C1800BD8487 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AB807729675C1800BD8487 /* StringExtensions.swift */; };
 		80B29BDF293FB19500180776 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B29BDE293FB19500180776 /* NetworkManager.swift */; };
 		80B29BE2293FB1C800180776 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B29BE1293FB1C800180776 /* AppConfiguration.swift */; };
 		80B34B9A27592EBB001357F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B34B9927592EBB001357F8 /* AppDelegate.swift */; };
@@ -95,6 +96,7 @@
 		80245B5228CDDEBB00789893 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		805DC8C227DB474F0070C37F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		805DC8C427DB4AE80070C37F /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		80AB807729675C1800BD8487 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		80B29BDE293FB19500180776 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		80B29BE1293FB1C800180776 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		80B34B9627592EBB001357F8 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				80D56C17276F98250079BC17 /* UIExtensions.swift */,
+				80AB807729675C1800BD8487 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */,
 				80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */,
 				80CD95812966D5C00055AA35 /* FavoritesCoordinator.swift in Sources */,
+				80AB807829675C1800BD8487 /* StringExtensions.swift in Sources */,
 				80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */,
 				80B29BDF293FB19500180776 /* NetworkManager.swift in Sources */,
 				80E0D7F627FB127200CAE562 /* Photo.swift in Sources */,

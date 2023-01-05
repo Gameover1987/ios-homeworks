@@ -19,8 +19,9 @@ final class FavoritesViewController : UIViewController {
         
         view.backgroundColor = .white
         
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: ProfileViewController.publicationCellId)
+        navigationItem.searchController = searchController
         
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: ProfileViewController.publicationCellId)
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
@@ -31,6 +32,13 @@ final class FavoritesViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search by author..."
+        return searchController
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -61,5 +69,13 @@ extension FavoritesViewController : UITableViewDataSource {
         
         return cell
     }
+}
 
+extension FavoritesViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        viewModel.searchString = searchController.searchBar.text ?? ""
+        
+        tableView.reloadData()
+    }
 }

@@ -6,7 +6,9 @@ protocol FavoriteStorageProtocol {
     
     var publications: [PublicationEntity] {get}
     
-    func addToFavorites(post: Post) -> PublicationEntity
+    func applyFilter(searchString: String)
+    
+    func addToFavorites(post: Post)
     
     func removeFromfavorites(publication: PublicationEntity)
 }
