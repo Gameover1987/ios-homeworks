@@ -38,7 +38,10 @@ public class LoginView : UIView {
         loginTextFileld.backgroundColor = .systemGray6.withAlphaComponent(0.1)
         loginTextFileld.textColor = .black
         loginTextFileld.keyboardType = .emailAddress
-        loginTextFileld.attributedPlaceholder = NSAttributedString(string: "Email or phone", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
+        
+        let emailPlaceholder = LoginLocalizer.emailOrPhonePlaceholder.rawValue.localize(from: .loginDictionary)
+        
+        loginTextFileld.attributedPlaceholder = NSAttributedString(string: emailPlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         loginTextFileld.font = .systemFont(ofSize: 16.0)
         loginTextFileld.tintColor = UIColor(named: "vkColor")
         loginTextFileld.autocapitalizationType = .none
@@ -55,7 +58,10 @@ public class LoginView : UIView {
         let passwordTextFileld = UITextField()
         passwordTextFileld.backgroundColor = .systemGray6.withAlphaComponent(0.1)
         passwordTextFileld.textColor = .black
-        passwordTextFileld.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
+        
+        let passwordPlaceholder = LoginLocalizer.passwordPlaceholder.rawValue.localize(from: .loginDictionary)
+        
+        passwordTextFileld.attributedPlaceholder = NSAttributedString(string: passwordPlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         passwordTextFileld.font = .systemFont(ofSize: 16.0)
         passwordTextFileld.tintColor = UIColor(named: "vkColor")
         passwordTextFileld.autocapitalizationType = .none
@@ -83,7 +89,9 @@ public class LoginView : UIView {
     
     private var logInButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Log In", for: .normal)
+        let loginCaption = LoginLocalizer.loginButtonCaption.rawValue.localize(from: .loginDictionary)
+        
+        button.setTitle(loginCaption, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .disabled)
         button.backgroundColor = UIColor.init(named: "vkColor")
@@ -95,7 +103,10 @@ public class LoginView : UIView {
     
     private var signUpButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Want join us? Sign up!", for: .normal)
+        
+        let joinUsLabel = LoginLocalizer.signUpLabel.rawValue.localize(from: .loginDictionary)
+        
+        button.setTitle(joinUsLabel, for: .normal)
         
         button.setTitleColor(UIColor.init(named: "vkColor"), for: .normal)
         button.setTitleColor(.gray, for: .disabled)

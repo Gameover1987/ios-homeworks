@@ -19,7 +19,9 @@ class PostViewController: UIViewController {
 
         view.backgroundColor = .white
         
-        let infoBarButtonItem = UIBarButtonItem(title: "Info", style: .done, target: self, action: #selector(showInfo))
+        let infoBarButtonItem = UIBarButtonItem(title: PostScreenLocalizer.info.rawValue.localize(from: .postDictionary), style: .done, target: self, action: #selector(showInfo))
+        
+        let aaa = PostScreenLocalizer.info.rawValue.localize(from: .postDictionary)
         
         self.navigationItem.rightBarButtonItem = infoBarButtonItem
     }

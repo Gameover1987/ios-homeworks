@@ -1,7 +1,7 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
+final class FeedViewController: UIViewController {
 
     private let viewModel: FeedViewModel
     
@@ -24,7 +24,7 @@ class FeedViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
-        button.setTitle("Show post", for: .normal)
+        button.setTitle(FeedScreenLocalizer.showPostButton.rawValue.localize(from: .feedDictionary), for: .normal)
         button.frame = CGRect(x: 100, y: 420, width: 200, height: 50)
         button.addTarget(self, action: #selector(openPostButtonAction), for: .touchDown)
         view.addSubview(button)

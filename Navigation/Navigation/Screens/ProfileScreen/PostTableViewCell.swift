@@ -70,8 +70,12 @@ class PostTableViewCell: UITableViewCell {
             postImageView.image = processedImage
         })
         postDescriptionLabel.text = description
-        postCountLikes.text = "Likes: \(countLikes)"
-        postCountViews.text = "Views: \(countViews)"
+        
+        
+        let likes = ProfileScreenLocalizer.likeCountByPost.rawValue.localize(from: .profileDictionary, value: countLikes)
+        let views = ProfileScreenLocalizer.viewCountByPost.rawValue.localize(from: .profileDictionary, value: countViews)
+        postCountLikes.text = likes
+        postCountViews.text = views
     }
     
     func hideFeedbackPanel() {

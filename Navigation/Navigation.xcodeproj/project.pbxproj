@@ -30,6 +30,20 @@
 		80CD957F2966D5990055AA35 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD957E2966D5990055AA35 /* FavoritesViewController.swift */; };
 		80CD95812966D5C00055AA35 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD95802966D5C00055AA35 /* FavoritesCoordinator.swift */; };
 		80CD95832966D5CF0055AA35 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD95822966D5CF0055AA35 /* FavoritesViewModel.swift */; };
+		80D51E13298C17CA00ECA995 /* LoginScreenLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80D51E15298C17CA00ECA995 /* LoginScreenLocalization.strings */; };
+		80D51E18298C195100ECA995 /* LocalizableScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51E17298C195100ECA995 /* LocalizableScreens.swift */; };
+		80D51E1A298C1B1D00ECA995 /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51E19298C1B1D00ECA995 /* LoginLocalization.swift */; };
+		80D51E1D298C20CF00ECA995 /* ProfileScreenLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80D51E1F298C20CF00ECA995 /* ProfileScreenLocalization.strings */; };
+		80D51E22298C21B500ECA995 /* ProfileScreenLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51E21298C21B500ECA995 /* ProfileScreenLocalizer.swift */; };
+		80D51E25298C245C00ECA995 /* FeedScreenLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80D51E27298C245C00ECA995 /* FeedScreenLocalization.strings */; };
+		80D51E2A298C248D00ECA995 /* FeedScreenLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51E29298C248D00ECA995 /* FeedScreenLocalizer.swift */; };
+		80D51E2D298C255B00ECA995 /* PostScreenLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80D51E2F298C255B00ECA995 /* PostScreenLocalization.strings */; };
+		80D51E32298C257800ECA995 /* PostScreenLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51E31298C257800ECA995 /* PostScreenLocalizer.swift */; };
+		80D51E35298C294200ECA995 /* InfoScreenLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80D51E37298C294200ECA995 /* InfoScreenLocalization.strings */; };
+		80D51E3A298C298900ECA995 /* InfoScreenLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51E39298C298900ECA995 /* InfoScreenLocalizer.swift */; };
+		80D51E3D298C2DAB00ECA995 /* FavoritesScreenLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80D51E3F298C2DAB00ECA995 /* FavoritesScreenLocalization.strings */; };
+		80D51E42298C2DBE00ECA995 /* FavoritesScreenLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51E41298C2DBE00ECA995 /* FavoritesScreenLocalizer.swift */; };
+		80D51E4A298C394E00ECA995 /* ProfileScreenLocalization.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 80D51E4C298C394E00ECA995 /* ProfileScreenLocalization.stringsdict */; };
 		80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */; };
 		80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56C17276F98250079BC17 /* UIExtensions.swift */; };
 		80D6CC792943B7DB00E6E679 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6CC782943B7DB00E6E679 /* Planet.swift */; };
@@ -113,6 +127,27 @@
 		80CD957E2966D5990055AA35 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		80CD95802966D5C00055AA35 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		80CD95822966D5CF0055AA35 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		80D51E14298C17CA00ECA995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LoginScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E16298C17CE00ECA995 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LoginScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E17298C195100ECA995 /* LocalizableScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableScreens.swift; sourceTree = "<group>"; };
+		80D51E19298C1B1D00ECA995 /* LoginLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLocalization.swift; sourceTree = "<group>"; };
+		80D51E1E298C20CF00ECA995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ProfileScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E20298C20D300ECA995 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ProfileScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E21298C21B500ECA995 /* ProfileScreenLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenLocalizer.swift; sourceTree = "<group>"; };
+		80D51E26298C245C00ECA995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E28298C246000ECA995 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FeedScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E29298C248D00ECA995 /* FeedScreenLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenLocalizer.swift; sourceTree = "<group>"; };
+		80D51E2E298C255B00ECA995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PostScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E30298C255C00ECA995 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PostScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E31298C257800ECA995 /* PostScreenLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenLocalizer.swift; sourceTree = "<group>"; };
+		80D51E36298C294200ECA995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E38298C294700ECA995 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E39298C298900ECA995 /* InfoScreenLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenLocalizer.swift; sourceTree = "<group>"; };
+		80D51E3E298C2DAB00ECA995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FavoritesScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E40298C2DAE00ECA995 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FavoritesScreenLocalization.strings; sourceTree = "<group>"; };
+		80D51E41298C2DBE00ECA995 /* FavoritesScreenLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreenLocalizer.swift; sourceTree = "<group>"; };
+		80D51E4B298C394E00ECA995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/ProfileScreenLocalization.stringsdict; sourceTree = "<group>"; };
+		80D51E4D298C395700ECA995 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/ProfileScreenLocalization.stringsdict; sourceTree = "<group>"; };
 		80D56BCE276F43400079BC17 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		80D56C17276F98250079BC17 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		80D6CC782943B7DB00E6E679 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
@@ -250,6 +285,8 @@
 				80CD957E2966D5990055AA35 /* FavoritesViewController.swift */,
 				80CD95802966D5C00055AA35 /* FavoritesCoordinator.swift */,
 				80CD95822966D5CF0055AA35 /* FavoritesViewModel.swift */,
+				80D51E3F298C2DAB00ECA995 /* FavoritesScreenLocalization.strings */,
+				80D51E41298C2DBE00ECA995 /* FavoritesScreenLocalizer.swift */,
 			);
 			path = FavoritesScreen;
 			sourceTree = "<group>";
@@ -270,6 +307,8 @@
 				80E084BF27A57E1B004B100D /* LoginView.swift */,
 				80DD154C293155140044747A /* LoginCoordinator.swift */,
 				80DD154E293156600044747A /* LoginViewModel.swift */,
+				80D51E15298C17CA00ECA995 /* LoginScreenLocalization.strings */,
+				80D51E19298C1B1D00ECA995 /* LoginLocalization.swift */,
 			);
 			path = LoginScreen;
 			sourceTree = "<group>";
@@ -283,6 +322,9 @@
 				805DC8C427DB4AE80070C37F /* PostTableViewCell.swift */,
 				80DD15542931599F0044747A /* ProfileCoordinator.swift */,
 				80DD1556293159CB0044747A /* ProfileViewModel.swift */,
+				80D51E1F298C20CF00ECA995 /* ProfileScreenLocalization.strings */,
+				80D51E21298C21B500ECA995 /* ProfileScreenLocalizer.swift */,
+				80D51E4C298C394E00ECA995 /* ProfileScreenLocalization.stringsdict */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -293,6 +335,8 @@
 				80CC307B275A1B4400D90FCA /* FeedViewController.swift */,
 				80DD15502931587A0044747A /* FeedCoordinator.swift */,
 				80DD1552293158940044747A /* FeedViewModel.swift */,
+				80D51E27298C245C00ECA995 /* FeedScreenLocalization.strings */,
+				80D51E29298C248D00ECA995 /* FeedScreenLocalizer.swift */,
 			);
 			path = FeedScreen;
 			sourceTree = "<group>";
@@ -312,6 +356,8 @@
 			children = (
 				80CC3080275A1BAF00D90FCA /* PostViewController.swift */,
 				80DD155F29315DAF0044747A /* PostViewModel.swift */,
+				80D51E2F298C255B00ECA995 /* PostScreenLocalization.strings */,
+				80D51E31298C257800ECA995 /* PostScreenLocalizer.swift */,
 			);
 			path = PostScreen;
 			sourceTree = "<group>";
@@ -320,6 +366,8 @@
 			isa = PBXGroup;
 			children = (
 				80CC3082275A1C0800D90FCA /* InfoViewController.swift */,
+				80D51E37298C294200ECA995 /* InfoScreenLocalization.strings */,
+				80D51E39298C298900ECA995 /* InfoScreenLocalizer.swift */,
 			);
 			path = InfoScreen;
 			sourceTree = "<group>";
@@ -327,14 +375,15 @@
 		80E084C127A57E54004B100D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				80CD957D2966D5740055AA35 /* FavoritesScreen */,
-				80DD1549293151CA0044747A /* InfoScreen */,
-				80DD1548293151B90044747A /* PostScreen */,
-				80DD1547293151A00044747A /* PhotosScreen */,
-				80DD1546293151890044747A /* FeedScreen */,
-				80DD1542293150E30044747A /* LoginScreen */,
-				80DD1544293151200044747A /* ProfileScreen */,
 				80DD154A2931543D0044747A /* Coordinator.swift */,
+				80D51E17298C195100ECA995 /* LocalizableScreens.swift */,
+				80CD957D2966D5740055AA35 /* FavoritesScreen */,
+				80DD1546293151890044747A /* FeedScreen */,
+				80DD1549293151CA0044747A /* InfoScreen */,
+				80DD1542293150E30044747A /* LoginScreen */,
+				80DD1547293151A00044747A /* PhotosScreen */,
+				80DD1548293151B90044747A /* PostScreen */,
+				80DD1544293151200044747A /* ProfileScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -467,6 +516,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 80B34B8D27592EBB001357F8;
 			packageReferences = (
@@ -495,8 +545,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80D51E25298C245C00ECA995 /* FeedScreenLocalization.strings in Resources */,
+				80D51E4A298C394E00ECA995 /* ProfileScreenLocalization.stringsdict in Resources */,
+				80D51E2D298C255B00ECA995 /* PostScreenLocalization.strings in Resources */,
 				80B34BA327592EBC001357F8 /* Assets.xcassets in Resources */,
+				80D51E1D298C20CF00ECA995 /* ProfileScreenLocalization.strings in Resources */,
+				80D51E13298C17CA00ECA995 /* LoginScreenLocalization.strings in Resources */,
 				80DD9AAF2946424E007C42A5 /* GoogleService-Info.plist in Resources */,
+				80D51E35298C294200ECA995 /* InfoScreenLocalization.strings in Resources */,
+				80D51E3D298C2DAB00ECA995 /* FavoritesScreenLocalization.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,15 +628,20 @@
 				805DC8C527DB4AE80070C37F /* PostTableViewCell.swift in Sources */,
 				80E084BE27A57BC3004B100D /* LoginViewController.swift in Sources */,
 				80DD154D293155140044747A /* LoginCoordinator.swift in Sources */,
+				80D51E3A298C298900ECA995 /* InfoScreenLocalizer.swift in Sources */,
 				80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */,
+				80D51E32298C257800ECA995 /* PostScreenLocalizer.swift in Sources */,
+				80D51E42298C2DBE00ECA995 /* FavoritesScreenLocalizer.swift in Sources */,
 				80CD957C2966D4840055AA35 /* CoreDataFavoritePublicationsStorage.swift in Sources */,
 				80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */,
 				80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */,
 				80CD95812966D5C00055AA35 /* FavoritesCoordinator.swift in Sources */,
 				80AB807829675C1800BD8487 /* StringExtensions.swift in Sources */,
 				80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */,
+				80D51E1A298C1B1D00ECA995 /* LoginLocalization.swift in Sources */,
 				80B29BDF293FB19500180776 /* NetworkManager.swift in Sources */,
 				80E0D7F627FB127200CAE562 /* Photo.swift in Sources */,
+				80D51E2A298C248D00ECA995 /* FeedScreenLocalizer.swift in Sources */,
 				80DC8B8C27F9EC79000A4D5A /* PhotosTableViewCell.swift in Sources */,
 				80DD1553293158940044747A /* FeedViewModel.swift in Sources */,
 				80CC3081275A1BAF00D90FCA /* PostViewController.swift in Sources */,
@@ -590,7 +652,9 @@
 				80E95F1D29366622005F0908 /* Authorizer.swift in Sources */,
 				80CC3083275A1C0800D90FCA /* InfoViewController.swift in Sources */,
 				80DD1557293159CB0044747A /* ProfileViewModel.swift in Sources */,
+				80D51E22298C21B500ECA995 /* ProfileScreenLocalizer.swift in Sources */,
 				80DD154F293156600044747A /* LoginViewModel.swift in Sources */,
+				80D51E18298C195100ECA995 /* LocalizableScreens.swift in Sources */,
 				80245B5328CDDEBB00789893 /* DataService.swift in Sources */,
 				80DD15642931624A0044747A /* PhotosCoordinator.swift in Sources */,
 				80E95F1F293670E3005F0908 /* ImageProvider.swift in Sources */,
@@ -608,6 +672,72 @@
 			targetProxy = 80245B4628CDDD9300789893 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		80D51E15298C17CA00ECA995 /* LoginScreenLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80D51E14298C17CA00ECA995 /* en */,
+				80D51E16298C17CE00ECA995 /* ru */,
+			);
+			name = LoginScreenLocalization.strings;
+			sourceTree = "<group>";
+		};
+		80D51E1F298C20CF00ECA995 /* ProfileScreenLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80D51E1E298C20CF00ECA995 /* en */,
+				80D51E20298C20D300ECA995 /* ru */,
+			);
+			name = ProfileScreenLocalization.strings;
+			sourceTree = "<group>";
+		};
+		80D51E27298C245C00ECA995 /* FeedScreenLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80D51E26298C245C00ECA995 /* en */,
+				80D51E28298C246000ECA995 /* ru */,
+			);
+			name = FeedScreenLocalization.strings;
+			sourceTree = "<group>";
+		};
+		80D51E2F298C255B00ECA995 /* PostScreenLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80D51E2E298C255B00ECA995 /* en */,
+				80D51E30298C255C00ECA995 /* ru */,
+			);
+			name = PostScreenLocalization.strings;
+			sourceTree = "<group>";
+		};
+		80D51E37298C294200ECA995 /* InfoScreenLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80D51E36298C294200ECA995 /* en */,
+				80D51E38298C294700ECA995 /* ru */,
+			);
+			name = InfoScreenLocalization.strings;
+			sourceTree = "<group>";
+		};
+		80D51E3F298C2DAB00ECA995 /* FavoritesScreenLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80D51E3E298C2DAB00ECA995 /* en */,
+				80D51E40298C2DAE00ECA995 /* ru */,
+			);
+			name = FavoritesScreenLocalization.strings;
+			sourceTree = "<group>";
+		};
+		80D51E4C298C394E00ECA995 /* ProfileScreenLocalization.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80D51E4B298C394E00ECA995 /* en */,
+				80D51E4D298C395700ECA995 /* ru */,
+			);
+			name = ProfileScreenLocalization.stringsdict;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		80245B4B28CDDD9300789893 /* Debug */ = {

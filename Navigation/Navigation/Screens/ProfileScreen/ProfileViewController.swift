@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .red
 #endif
         
-        title = "Profile"
+        title = ProfileScreenLocalizer.title.rawValue.localize(from: .profileDictionary)
         
         view.addSubview(tableContents)
         tableContents.register(PhotosTableViewCell.self, forCellReuseIdentifier: ProfileViewController.photosCellId)

@@ -32,7 +32,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         var label = UILabel()
-        label.text = "Photos"
+        label.text = ProfileScreenLocalizer.photos.rawValue.localize(from: .profileDictionary)
         label.font = .boldSystemFont(ofSize: 24)
         label.textColor = .black
         label.toAutoLayout()
