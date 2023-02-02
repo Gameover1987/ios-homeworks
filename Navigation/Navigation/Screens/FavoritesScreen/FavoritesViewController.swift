@@ -1,8 +1,9 @@
 
-import UIKit
 import SnapKit
+import CoreData
 
 final class FavoritesViewController : UIViewController {
+    
     private let viewModel: FavoritesViewModel
     
     init(viewModel: FavoritesViewModel) {
@@ -18,6 +19,19 @@ final class FavoritesViewController : UIViewController {
         title = "Favorites"
         
         view.backgroundColor = .white
+        
+        viewModel.insertRowsAction = { [weak self] indexPath in
+            self?.tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+        viewModel.deleteRowsAction = {  [weak self] indexPath in
+            self?.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        viewModel.moveRowAction = { [weak self] indexPath, newIndexPath in
+            self?.tableView.moveRow(at: indexPath, to: newIndexPath)
+        }
+        viewModel.updateRowsAction = { [weak self] indexPath in
+            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
         
         navigationItem.searchController = searchController
         
@@ -53,7 +67,7 @@ extension FavoritesViewController : UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .destructive,
                                               title: "Del") { [weak self] ( action, view, completionHandler) in
             guard let self = self else {return}
-            let publication = self.viewModel.publications[indexPath.row]
+            let publication = self.viewModel.getPublication(at: indexPath)
             self.viewModel.removePublication(publication: publication)
             tableView.reloadData()
         }
@@ -66,11 +80,11 @@ extension FavoritesViewController : UITableViewDelegate {
 
 extension FavoritesViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.publications.count
+        return viewModel.publicationsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let publication = viewModel.publications[indexPath.row]
+        let publication = self.viewModel.getPublication(at: indexPath)
         
         guard let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewController.publicationCellId, for: indexPath) as? PostTableViewCell else { fatalError() }
         cell.update(name: publication.author!,
@@ -87,7 +101,7 @@ extension FavoritesViewController : UITableViewDataSource {
 extension FavoritesViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
-        viewModel.searchString = searchController.searchBar.text ?? ""
+        viewModel.applyFilter(filter: searchController.searchBar.text ?? "")
         
         tableView.reloadData()
     }

@@ -6,82 +6,43 @@ final class CoreDataFavoritePublicationsStorage : FavoriteStorageProtocol {
     
     static let shared = CoreDataFavoritePublicationsStorage()
     
-    private var searchString: String = ""
-    
-    private lazy var mainContext: NSManagedObjectContext = {
-        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        context.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
-        return context
-    }()
-    
-    private lazy var backgroundContext: NSManagedObjectContext = {
-        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        context.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
-        return context
-    }()
-    
     private init() {
-        fetchPublications()
-    }
-    
-    var publications: [PublicationEntity] = []
-    
-    func applyFilter(searchString: String) {
-        self.searchString = searchString
-        fetchPublications()
+        
     }
     
     func addToFavorites(post: Post) {
-        
-        if isPublicationExists(author: post.author, text: post.description) {
-            return
+        persistentContainer.performBackgroundTask {[weak self] context in
+            guard let self = self else { return }
+            let publication = self.getOrCreatePublication(post: post, in: context)
+            self.save(in: context)
         }
-        
-        let publication = PublicationEntity(context: backgroundContext)
-        publication.createdAt = Date()
-        publication.text = post.description
-        publication.author = post.author
-        publication.imageData = post.image.pngData() ?? Data()
-        
-        saveBackgroundContext()
-        
-        fetchPublications()
     }
     
     func removeFromfavorites(publication: PublicationEntity) {
-        mainContext.delete(publication)
-        
-        saveMainContext()
-        
-        fetchPublications()
+        persistentContainer.viewContext.delete(publication)
+      
+        try! persistentContainer.viewContext.save()
     }
     
-    private func isPublicationExists(author: String, text: String) -> Bool {
-        let request = PublicationEntity.fetchRequest()
-        request.fetchLimit =  1
-        request.predicate = NSPredicate(format: "author == %@", author)
-        request.predicate = NSPredicate(format: "text == %@", text)
-
-        do {
-            let count = try backgroundContext.count(for: request)
-            return count > 0
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return false
-        }
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
     }
     
-    private func fetchPublications() {
+    private func getOrCreatePublication(post: Post, in context: NSManagedObjectContext) -> PublicationEntity {
         let request = PublicationEntity.fetchRequest()
-        if !self.searchString.isEmpty {
-            request.predicate = NSPredicate(format: "author contains[c] %@", searchString)
-        }
+        request.predicate = NSPredicate(format: "author == %@ AND text == %@", post.author, post.description)
         
-        do {
-            request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
-            publications = try mainContext.fetch(request)
-        } catch {
-            print(error)
+        if let publicationEntity = (try? context.fetch(request))?.first {
+            return publicationEntity
+        }
+        else {
+            let publicationEntity = PublicationEntity(context: context)
+            publicationEntity.author = post.author
+            publicationEntity.createdAt = Date()
+            publicationEntity.text = post.description
+            publicationEntity.imageData = post.image.pngData() ?? Data()
+            
+            return publicationEntity
         }
     }
     
@@ -92,27 +53,19 @@ final class CoreDataFavoritePublicationsStorage : FavoriteStorageProtocol {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        
         return container
     }()
 
-    private func saveMainContext () {
-        if mainContext.hasChanges {
+    private func save(in context: NSManagedObjectContext) {
+        if context.hasChanges {
             do {
-                try mainContext.save()
+                try context.save()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error in main context \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
-    private func saveBackgroundContext() {
-        if backgroundContext.hasChanges {
-            do {
-                try backgroundContext.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error in background context \(nserror), \(nserror.userInfo)")
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
