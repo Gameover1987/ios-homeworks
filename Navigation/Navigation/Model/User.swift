@@ -3,11 +3,10 @@ import Foundation
 
 class User {
     var login: String
-    var fullName: String
+    var UID: String
     
-    init(login: String, fullName: String) {
+    init(UID: String, login: String) {
+        self.UID = UID
         self.login = login
-        self.fullName = fullName
     }
 }
-

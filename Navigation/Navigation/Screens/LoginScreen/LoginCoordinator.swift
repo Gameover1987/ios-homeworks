@@ -35,7 +35,7 @@ final class LoginCoordinator : Coordinator {
     
     private func showMainTabBar() {
         tabBarController.setViewControllers(
-            [configureProfileCoordinator(), configureFeedCoordinator(),],
+            [configureProfileCoordinator(), configureFeedCoordinator(), configureFavoritePublicationsCoordinator()],
             animated: false
         )
         
@@ -47,8 +47,13 @@ final class LoginCoordinator : Coordinator {
             switch index {
             case 0:
                 item.image = UIImage(systemName: "house")
+                item.title = "Profile"
             case 1:
                 item.image = UIImage(systemName: "person")
+                item.title = "Feed"
+            case 2:
+                item.image = UIImage(systemName: "star")
+                item.title = "Favorites"
             default:
                 break
             }
@@ -81,6 +86,20 @@ final class LoginCoordinator : Coordinator {
         
         store(coordinator: profileCoordinator)
         profileCoordinator.start()
+        
+        return navigationController
+    }
+    
+    private func configureFavoritePublicationsCoordinator() -> UINavigationController {
+        let navigationController = UINavigationController()
+        let favoritesCoordinator = FavoritesCoordinator(navigationController: navigationController)
+        
+        favoritesCoordinator.isCompleted = { [weak self, weak favoritesCoordinator] in
+            self?.release(coordinator: favoritesCoordinator)
+        }
+        
+        store(coordinator: favoritesCoordinator)
+        favoritesCoordinator.start()
         
         return navigationController
     }

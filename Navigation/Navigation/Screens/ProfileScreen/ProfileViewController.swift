@@ -19,11 +19,17 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+        gestureRecognizer.numberOfTapsRequired = 2
+        tableContents.addGestureRecognizer(gestureRecognizer)
+        
 #if DEBUG
         view.backgroundColor = .white
 #else
         view.backgroundColor = .red
 #endif
+        
+        title = "Profile"
         
         view.addSubview(tableContents)
         tableContents.register(PhotosTableViewCell.self, forCellReuseIdentifier: ProfileViewController.photosCellId)
@@ -56,6 +62,16 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    @objc
+    private func handleDoubleTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        let point = tapGestureRecognizer.location(in: tableContents)
+        guard let indexPath = tableContents.indexPathForRow(at: point) else {return}
+        
+        let post = DataService.shared.publications[indexPath.row]
+        
+        CoreDataFavoritePublicationsStorage.shared.addToFavorites(post: post)
+    }
+    
     private func handleImageDownloadError(error: ImageDownloadError) {
         switch error {
         case .imageNotFound:
@@ -83,8 +99,8 @@ class ProfileViewController: UIViewController {
         return table
     }()
     
-    private static var publicationCellId: String = "publicationCell"
-    private static var photosCellId: String = "photosCell"
+     static var publicationCellId: String = "publicationCell"
+     static var photosCellId: String = "photosCell"
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
