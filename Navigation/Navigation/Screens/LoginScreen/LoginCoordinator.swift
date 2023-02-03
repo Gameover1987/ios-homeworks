@@ -47,13 +47,13 @@ final class LoginCoordinator : Coordinator {
             switch index {
             case 0:
                 item.image = UIImage(systemName: "house")
-                item.title = "Profile"
+                item.title = ProfileScreenLocalizer.title.rawValue.localize(from: .profileDictionary)
             case 1:
                 item.image = UIImage(systemName: "person")
-                item.title = "Feed"
+                item.title = FeedScreenLocalizer.title.rawValue.localize(from: .feedDictionary)
             case 2:
                 item.image = UIImage(systemName: "star")
-                item.title = "Favorites"
+                item.title = FavoritesScreenLocalizer.title.rawValue.localize(from: .favoritesDictionary)
             default:
                 break
             }

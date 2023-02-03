@@ -107,7 +107,7 @@ public class ProfileHeaderView : UIView {
     
     private let setStatusButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Set status", for: .normal)
+        button.setTitle(ProfileScreenLocalizer.statusButton.rawValue.localize(from: .profileDictionary), for: .normal)
         button.backgroundColor = UIColorUtils.CreateFromRGB(red: 0, green: 146, blue: 249)
         button.layer.cornerRadius = 4
         button.layer.shadowOffset = CGSize(width: 4, height: 4)

@@ -24,7 +24,7 @@ final class PhotosViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.systemBlue
         navigationController?.navigationBar.isHidden = false
         
-        title = "Photos"
+        title = ProfileScreenLocalizer.photos.rawValue.localize(from: .profileDictionary)
         view.backgroundColor = .systemGray
         view.addSubview(collectionView)
         collectionView.dataSource = self

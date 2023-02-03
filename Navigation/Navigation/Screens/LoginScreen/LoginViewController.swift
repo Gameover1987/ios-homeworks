@@ -80,7 +80,10 @@ class LoginViewController : UIViewController {
       
 
         
-        authorizer.checkCredentionals(login: login, password: password) { [weak self] result in
+        let localize = NSLocalizedString("PlaceHolder_emailOrPhone", tableName: LocalizableScreens.loginDictionary, bundle: Bundle.main, value: "", comment: "")
+        localize.ta
+        
+        authorizer.checkCredentionals(loginDictionary: loginDictionary, password: password) { [weak self] result in
             guard let self = self else { return }
             
             switch result {

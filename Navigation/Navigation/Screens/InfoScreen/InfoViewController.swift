@@ -29,7 +29,7 @@ class InfoViewController: UIViewController {
     private lazy var buttonAlert: UIButton = {
         let button = UIButton(type: .custom) as UIButton
         button.backgroundColor = .white
-        button.setTitle("Show alert", for: .normal)
+        button.setTitle(InfoScreenLocalizer.buttonAlert.rawValue.localize(from: .infoDictionary), for: .normal)
         button.addTarget(self, action: #selector(alertAction), for: .touchDown)
         
         return button
@@ -39,7 +39,7 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        self.title = "Information"
+        self.title = InfoScreenLocalizer.title.rawValue.localize(from: .infoDictionary)
         
         view.addSubview(titleLabel)
         view.addSubview(rotationPeriodLabel)
@@ -103,9 +103,11 @@ class InfoViewController: UIViewController {
         let buttonOK = { (_: UIAlertAction) -> Void in print("OK button pressed") }
         let buttonCancel = { (_: UIAlertAction) -> Void in print("Cancel button pressed") }
         
-        let alert = UIAlertController(title: "Alert", message: "Do you want something?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: buttonOK))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: buttonCancel))
+        let alert = UIAlertController(title: InfoScreenLocalizer.titleAlert.rawValue.localize(from: .infoDictionary),
+                                      message: InfoScreenLocalizer.alertMessage.rawValue.localize(from: .infoDictionary),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: InfoScreenLocalizer.titleOK.rawValue.localize(from: .infoDictionary), style: .default, handler: buttonOK))
+        alert.addAction(UIAlertAction(title: InfoScreenLocalizer.titleCancel.rawValue.localize(from: .infoDictionary), style: .default, handler: buttonCancel))
         self.present(alert, animated: true, completion: nil)
     }
 }

@@ -15,7 +15,7 @@ final class FeedCoordinator : Coordinator {
     func start() {
         let viewModel = FeedViewModel()
         let viewController = FeedViewController(viewModel: viewModel)
-        viewController.title = "Feed"
+        viewController.title = FeedScreenLocalizer.title.rawValue.localize(from: .feedDictionary)
         
         viewModel.goToPostAction = { [weak self] in
             self?.showPostScreen()
@@ -32,7 +32,7 @@ final class FeedCoordinator : Coordinator {
             controller.present(infoNavigationController, animated: true, completion: nil)
         }
         let postViewController = PostViewController(viewModel: postViewModel)
-        postViewController.title = "Post"
+        postViewController.title = PostScreenLocalizer.title.rawValue.localize(from: .postDictionary)
         
         self.navigationController.pushViewController(postViewController, animated: true)
     }

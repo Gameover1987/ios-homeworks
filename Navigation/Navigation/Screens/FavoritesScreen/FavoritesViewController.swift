@@ -16,7 +16,7 @@ final class FavoritesViewController : UIViewController {
     }
     
     override func viewDidLoad() {
-        title = "Favorites"
+        title = FavoritesScreenLocalizer.title.rawValue.localize(from: .favoritesDictionary)
         
         view.backgroundColor = .white
         
@@ -50,7 +50,7 @@ final class FavoritesViewController : UIViewController {
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search by author..."
+        searchController.searchBar.placeholder = FavoritesScreenLocalizer.searchBar.rawValue.localize(from: .favoritesDictionary)
         return searchController
     }()
     
