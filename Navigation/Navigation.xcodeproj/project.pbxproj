@@ -15,6 +15,7 @@
 		80245B5328CDDEBB00789893 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80245B5228CDDEBB00789893 /* DataService.swift */; };
 		805DC8C527DB4AE80070C37F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805DC8C427DB4AE80070C37F /* PostTableViewCell.swift */; };
 		8083A95928D7296C000AFF15 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 8083A95828D7296C000AFF15 /* iOSIntPackage */; };
+		80AADDBA298D727400B93723 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AADDB9298D727400B93723 /* Colors.swift */; };
 		80AB807829675C1800BD8487 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AB807729675C1800BD8487 /* StringExtensions.swift */; };
 		80B29BDF293FB19500180776 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B29BDE293FB19500180776 /* NetworkManager.swift */; };
 		80B29BE2293FB1C800180776 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B29BE1293FB1C800180776 /* AppConfiguration.swift */; };
@@ -110,6 +111,7 @@
 		80245B5228CDDEBB00789893 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		805DC8C227DB474F0070C37F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		805DC8C427DB4AE80070C37F /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		80AADDB9298D727400B93723 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		80AB807729675C1800BD8487 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		80B29BDE293FB19500180776 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		80B29BE1293FB1C800180776 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			children = (
 				80DD154A2931543D0044747A /* Coordinator.swift */,
 				80D51E17298C195100ECA995 /* LocalizableScreens.swift */,
+				80AADDB9298D727400B93723 /* Colors.swift */,
 				80CD957D2966D5740055AA35 /* FavoritesScreen */,
 				80DD1546293151890044747A /* FeedScreen */,
 				80DD1549293151CA0044747A /* InfoScreen */,
@@ -628,6 +631,7 @@
 				805DC8C527DB4AE80070C37F /* PostTableViewCell.swift in Sources */,
 				80E084BE27A57BC3004B100D /* LoginViewController.swift in Sources */,
 				80DD154D293155140044747A /* LoginCoordinator.swift in Sources */,
+				80AADDBA298D727400B93723 /* Colors.swift in Sources */,
 				80D51E3A298C298900ECA995 /* InfoScreenLocalizer.swift in Sources */,
 				80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */,
 				80D51E32298C257800ECA995 /* PostScreenLocalizer.swift in Sources */,

@@ -18,7 +18,7 @@ final class PhotosViewController: UIViewController {
         super.viewDidLoad()
         
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor.white
+        appearance.backgroundColor = Colors.background
         appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = UIColor.systemBlue

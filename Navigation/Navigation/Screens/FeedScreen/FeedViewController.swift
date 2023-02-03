@@ -17,13 +17,12 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.background
         
         let button = UIButton(type: .custom) as UIButton
-        button.backgroundColor = .systemGray
-        button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
+        button.backgroundColor = UIColor.init(named: "vkColor")
+        button.layer.cornerRadius = 10
         button.setTitle(FeedScreenLocalizer.showPostButton.rawValue.localize(from: .feedDictionary), for: .normal)
         button.frame = CGRect(x: 100, y: 420, width: 200, height: 50)
         button.addTarget(self, action: #selector(openPostButtonAction), for: .touchDown)

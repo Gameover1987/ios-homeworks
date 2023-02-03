@@ -23,11 +23,7 @@ class ProfileViewController: UIViewController {
         gestureRecognizer.numberOfTapsRequired = 2
         tableContents.addGestureRecognizer(gestureRecognizer)
         
-#if DEBUG
-        view.backgroundColor = .white
-#else
-        view.backgroundColor = .red
-#endif
+        view.backgroundColor = Colors.background
         
         title = ProfileScreenLocalizer.title.rawValue.localize(from: .profileDictionary)
         

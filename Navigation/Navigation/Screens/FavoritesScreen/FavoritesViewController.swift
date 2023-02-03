@@ -18,7 +18,7 @@ final class FavoritesViewController : UIViewController {
     override func viewDidLoad() {
         title = FavoritesScreenLocalizer.title.rawValue.localize(from: .favoritesDictionary)
         
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.background
         
         viewModel.insertRowsAction = { [weak self] indexPath in
             self?.tableView.insertRows(at: [indexPath], with: .automatic)

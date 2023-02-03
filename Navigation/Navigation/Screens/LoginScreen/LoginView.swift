@@ -36,7 +36,7 @@ public class LoginView : UIView {
     private var loginInputTextField: UITextField = {
         let loginTextFileld = UITextField()
         loginTextFileld.backgroundColor = .systemGray6.withAlphaComponent(0.1)
-        loginTextFileld.textColor = .black
+        loginTextFileld.textColor = Colors.textField
         loginTextFileld.keyboardType = .emailAddress
         
         let emailPlaceholder = LoginLocalizer.emailOrPhonePlaceholder.rawValue.localize(from: .loginDictionary)
@@ -57,7 +57,7 @@ public class LoginView : UIView {
     private var passwordInputTextField: UITextField = {
         let passwordTextFileld = UITextField()
         passwordTextFileld.backgroundColor = .systemGray6.withAlphaComponent(0.1)
-        passwordTextFileld.textColor = .black
+        passwordTextFileld.textColor = Colors.textField
         
         let passwordPlaceholder = LoginLocalizer.passwordPlaceholder.rawValue.localize(from: .loginDictionary)
         
@@ -122,6 +122,7 @@ public class LoginView : UIView {
     public func arrange(parentView: UIView) {
         
         addSubview(scrollView)
+        
         scrollView.addSubview(contentView)
         contentView.addSubview(vkLogo)
         contentView.addSubview(inputFieldStackView)

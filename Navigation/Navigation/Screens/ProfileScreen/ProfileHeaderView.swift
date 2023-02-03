@@ -97,8 +97,8 @@ public class ProfileHeaderView : UIView {
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 12
-        textField.layer.borderColor = UIColor.black.cgColor
-        textField.backgroundColor = .white
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        //textField.backgroundColor = .white
         
         textField.addTarget(self, action: #selector(statusTextChanged(_ :)), for: .editingChanged)
         textField.toAutoLayout()
