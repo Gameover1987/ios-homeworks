@@ -5,7 +5,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = Colors.background
         contentView.addSubview(titleLabel)
         contentView.addSubview(arrowButton)
         contentView.addSubview(photosCollectionView)
@@ -34,7 +34,7 @@ class PhotosTableViewCell: UITableViewCell {
         var label = UILabel()
         label.text = ProfileScreenLocalizer.photos.rawValue.localize(from: .profileDictionary)
         label.font = .boldSystemFont(ofSize: 24)
-        label.textColor = .black
+        label.textColor = Colors.textField
         label.toAutoLayout()
         return label
     }()
@@ -42,7 +42,7 @@ class PhotosTableViewCell: UITableViewCell {
     private let arrowButton: UIButton = {
         var button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = Colors.textField
         button.toAutoLayout()
         return button
     }()

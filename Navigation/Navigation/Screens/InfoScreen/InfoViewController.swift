@@ -5,7 +5,7 @@ class InfoViewController: UIViewController {
   
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .white
+        label.textColor = Colors.textField
         label.font = UIFont.systemFont(ofSize: 18)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -19,7 +19,7 @@ class InfoViewController: UIViewController {
     
     private lazy var rotationPeriodLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .white
+        label.textColor = Colors.textField
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .center
         label.toAutoLayout()
@@ -28,7 +28,8 @@ class InfoViewController: UIViewController {
     
     private lazy var buttonAlert: UIButton = {
         let button = UIButton(type: .custom) as UIButton
-        button.backgroundColor = .white
+        button.backgroundColor = UIColor.init(named: "vkColor")
+        button.layer.cornerRadius = 10
         button.setTitle(InfoScreenLocalizer.buttonAlert.rawValue.localize(from: .infoDictionary), for: .normal)
         button.addTarget(self, action: #selector(alertAction), for: .touchDown)
         
@@ -38,7 +39,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.background
         self.title = InfoScreenLocalizer.title.rawValue.localize(from: .infoDictionary)
         
         view.addSubview(titleLabel)
@@ -60,7 +61,7 @@ class InfoViewController: UIViewController {
         buttonAlert.snp.makeConstraints { make in
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.centerY.equalTo(view.safeAreaLayoutGuide)
-            make.width.equalTo(200)
+            make.width.equalTo(300)
             make.height.equalTo(50)
         }
     }

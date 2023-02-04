@@ -17,7 +17,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.background
         
         let infoBarButtonItem = UIBarButtonItem(title: PostScreenLocalizer.info.rawValue.localize(from: .postDictionary), style: .done, target: self, action: #selector(showInfo))
         
