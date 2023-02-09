@@ -1,0 +1,8 @@
+{
+    "Simulator Target Bundle": "com.slava-soft.Navigation",
+            "aps": {
+                "alert": "Push Notifications Test",
+                "sound": "default",
+                "category": "achtung!"
+            },
+}

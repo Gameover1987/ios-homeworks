@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        LocalNotificationsService.shared.registerForLatestUpdatesIfPossible()
+        
         rootCoordinator = LoginCoordinator(window: window)
         rootCoordinator?.start()
         
