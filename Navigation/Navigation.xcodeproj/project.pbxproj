@@ -21,6 +21,7 @@
 		80B29BE2293FB1C800180776 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B29BE1293FB1C800180776 /* AppConfiguration.swift */; };
 		80B34B9A27592EBB001357F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B34B9927592EBB001357F8 /* AppDelegate.swift */; };
 		80B34BA327592EBC001357F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B34BA227592EBC001357F8 /* Assets.xcassets */; };
+		80C25056299576670052F3EF /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C25055299576670052F3EF /* LocalNotificationsService.swift */; };
 		80CC307C275A1B4400D90FCA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC307B275A1B4400D90FCA /* FeedViewController.swift */; };
 		80CC307E275A1B6D00D90FCA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */; };
 		80CC3081275A1BAF00D90FCA /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CC3080275A1BAF00D90FCA /* PostViewController.swift */; };
@@ -119,6 +120,7 @@
 		80B34B9927592EBB001357F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80B34BA227592EBC001357F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80B34BA727592EBC001357F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80C25055299576670052F3EF /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		80CC307B275A1B4400D90FCA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		80CC307D275A1B6D00D90FCA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		80CC3080275A1BAF00D90FCA /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -265,10 +267,19 @@
 				80E084C327A57E97004B100D /* CustomControls */,
 				80D56C16276F98110079BC17 /* Extensions */,
 				805DC8C127DB47320070C37F /* Model */,
+				80C25054299576280052F3EF /* Notifications */,
 				80FAFB2C2948D99D00F408AA /* Resources */,
 				80E084C127A57E54004B100D /* Screens */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		80C25054299576280052F3EF /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				80C25055299576670052F3EF /* LocalNotificationsService.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		80CD95752966CF320055AA35 /* Storage */ = {
@@ -635,6 +646,7 @@
 				80D51E3A298C298900ECA995 /* InfoScreenLocalizer.swift in Sources */,
 				80D56C18276F98250079BC17 /* UIExtensions.swift in Sources */,
 				80D51E32298C257800ECA995 /* PostScreenLocalizer.swift in Sources */,
+				80C25056299576670052F3EF /* LocalNotificationsService.swift in Sources */,
 				80D51E42298C2DBE00ECA995 /* FavoritesScreenLocalizer.swift in Sources */,
 				80CD957C2966D4840055AA35 /* CoreDataFavoritePublicationsStorage.swift in Sources */,
 				80D56BCF276F43400079BC17 /* ProfileHeaderView.swift in Sources */,
